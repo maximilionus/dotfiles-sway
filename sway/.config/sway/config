@@ -18,6 +18,7 @@ set $menu wmenu-run
 output * bg ~/Pictures/Wallpaper fill
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec swaync
 exec udiskie
 exec playerctld daemon
 
