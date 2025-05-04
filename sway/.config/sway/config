@@ -11,6 +11,8 @@ set $right l
 set $term kitty
 # Your preferred application launcher
 set $menu wmenu-run
+# Your preferred lockscreen
+set $locker swaylock -f -c 000000 -s fill -i ~/Pictures/Wallpaper
 
 ### Output configuration
 #
@@ -31,16 +33,10 @@ exec playerctld daemon
 
 ### Idle configuration
 #
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 '$locker' \
+         timeout 0 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep '$locker'
 
 ### Input configuration
 #
@@ -58,6 +54,9 @@ exec playerctld daemon
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # Start a terminal
+    bindsym $mod+Escape exec $locker
 
     # Kill focused window
     bindsym $mod+Shift+q kill
