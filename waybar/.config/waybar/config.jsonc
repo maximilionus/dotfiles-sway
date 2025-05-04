@@ -164,8 +164,7 @@
         "format-ethernet": "",
         "tooltip-format": "",
         "format-linked": "",
-        "format-disconnected": "⚠",
-        "format-alt": "NET"
+        "format-disconnected": ""
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
