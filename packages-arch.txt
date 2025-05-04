@@ -1,1 +1,1 @@
-sway swaybg sway-contrib brightnessctl wmenu mako kitty udiskie xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
+sway swaybg sway-contrib brightnessctl wmenu mako kitty udiskie xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk polkit-gnome

@@ -17,6 +17,7 @@ set $menu wmenu-run
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/Pictures/Wallpaper fill
 
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec udiskie
 
 #
