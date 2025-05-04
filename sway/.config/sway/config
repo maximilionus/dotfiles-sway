@@ -181,9 +181,11 @@ exec playerctld daemon
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Shift+Print exec grim
-    bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+    # Special keys to take a screenshots with grim
+    bindsym Shift+Print exec grim \
+        && notify-send "Screenshot (Full screen)" "Saved to files"
+    bindsym Print exec grim -g "$(slurp -d)" - | wl-copy \
+        && notify-send "Screenshot (Selection)" "Saved to clipboard"
     # Special keys to control media playback
     bindsym XF86AudioPlay exec playerctl play-pause
     bindsym XF86AudioPause exec playerctl play-pause
@@ -195,17 +197,7 @@ exec playerctld daemon
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #0c0c0c
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 # Enforce window borders for every window
