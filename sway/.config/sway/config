@@ -101,7 +101,7 @@ exec udiskie
 
     # Resize focused window preserving directions
     bindsym $mod+y exec "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
-    bindsym $mod+u exec "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
+    bindsym $mod+u exec "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
     bindsym $mod+i exec "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
     bindsym $mod+o exec "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
 #
