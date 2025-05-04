@@ -1,0 +1,17 @@
+sway
+swaybg
+sway-contrib
+swaync
+swayidle
+swaylock
+wmenu
+polybar
+brightnessctl
+playerctl
+udiskie
+kitty
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+xdg-desktop-portal-gtk
+polkit-gnome
+otf-font-awesome
