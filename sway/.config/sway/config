@@ -19,6 +19,7 @@ output * bg ~/Pictures/Wallpaper fill
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec udiskie
+exec playerctld daemon
 
 #
 # Example configuration:
@@ -183,6 +184,11 @@ exec udiskie
     # Special key to take a screenshot with grim
     bindsym Shift+Print exec grim
     bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+    # Special keys to control media playback
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPause exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
 
 #
 # Status Bar:
