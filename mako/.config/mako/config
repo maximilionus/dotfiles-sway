@@ -1,1 +1,6 @@
+format=<b>%a</b>\n<b>%s</b>\n%b
 default-timeout=5000
+border-radius=12
+text-color=#ffffff
+background-color=#353535
+border-color=#353535
