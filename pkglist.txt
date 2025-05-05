@@ -5,7 +5,7 @@ swaync
 swayidle
 swaylock
 wmenu
-polybar
+waybar
 brightnessctl
 playerctl
 udiskie
