@@ -8,6 +8,7 @@ wmenu
 waybar
 brightnessctl
 playerctl
+pavucontrol
 udiskie
 kitty
 xdg-desktop-portal
