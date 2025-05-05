@@ -1,6 +1,7 @@
 @define-color var-color-bg rgba(0, 0, 0, 1.0);
 @define-color var-color-fg rgba(255, 255, 255, 1.0);
 @define-color var-color-hover rgba(84, 55, 128, 1);
+@define-color var-color-1 rgba(24, 24, 24, 1.0);
 
 
 * {
@@ -51,7 +52,7 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: @var-color-1;
 }
 
 #workspaces button.focused {
@@ -87,6 +88,12 @@ button:hover {
 #language,
 #mpd {
     padding: 0 10px;
+    color: @var-color-fg;
+    background-color: rgb(24, 24, 24);
+    border-radius: 12px;
+}
+
+#power-control {
     color: @var-color-fg;
     background-color: rgb(24, 24, 24);
     border-radius: 12px;
@@ -152,7 +159,7 @@ label:focus {
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+    background: @var-color-1;
 }
 
 #scratchpad.empty {

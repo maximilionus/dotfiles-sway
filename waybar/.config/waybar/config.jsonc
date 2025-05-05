@@ -20,30 +20,23 @@
         "backlight",
         "network",
         "pulseaudio",
-        "power-profiles-daemon",
-        "battery",
-        "battery#bat2",
+        "group/power-control",
         "keyboard-state",
         "clock",
         "sway/language"
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "group/power-control": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 100,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "battery",
+            "battery#bat2",
+            "power-profiles-daemon"
+        ]
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
