@@ -45,6 +45,8 @@ exec swayidle -w \
     input * {
         xkb_layout "us,ru"
         xkb_options "grp:win_space_toggle"
+        accel_profile "flat"
+        tap enabled
     }
 
 
