@@ -20,10 +20,12 @@
         "backlight",
         "network",
         "pulseaudio",
-        "group/power-control",
         "keyboard-state",
         "clock",
-        "sway/language"
+        "sway/language",
+        "battery#bat2",
+        "battery",
+        "group/power-control"
     ],
     "group/power-control": {
         "orientation": "horizontal",
@@ -32,9 +34,10 @@
             "transition-left-to-right": false
         },
         "modules": [
-            "battery",
-            "battery#bat2",
-            "power-profiles-daemon"
+            "custom/power",
+            "power-profiles-daemon",
+            "custom/suspend",
+            "custom/reboot"
         ]
     },
     "keyboard-state": {
@@ -178,28 +181,19 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl poweroff"
+    },
+    "custom/suspend": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl suspend"
+    },
+    "custom/reboot": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "reboot"
     }
 }
