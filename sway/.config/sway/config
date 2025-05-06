@@ -221,14 +221,14 @@ hide_edge_borders smart
 
 # Colors
 set $bg #080808
-set $bg_2 #484848
+set $bg_2 #808080
 set $fg #cfcfcf
 set $green #98971a
 set $blue #4585f8
 
 # class                 border  bground text    indicator child_border
 client.focused          $bg_2   $bg_2   $fg     $blue     $bg_2
-client.focused_inactive $bg     $bg     $fg     $blue     $bg
+client.focused_inactive $bg     $bg     $fg     $bg       $bg
 client.unfocused        $bg     $bg     $fg     $blue     $bg
 client.urgent           $green  $green  $fg     $blue     $fg
 client.placeholder      $fg     $bg     $bg     $blue     $fg
