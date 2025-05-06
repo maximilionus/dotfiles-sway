@@ -45,8 +45,15 @@ exec swayidle -w \
     input * {
         xkb_layout "us,ru"
         xkb_options "grp:win_space_toggle"
+    }
+
+    input type:pointer {
         accel_profile "flat"
+    }
+
+    input type:touchpad {
         tap enabled
+        natural_scroll enabled
     }
 
 
