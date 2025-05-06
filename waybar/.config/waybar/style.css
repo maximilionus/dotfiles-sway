@@ -79,7 +79,6 @@ button:hover {
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -89,6 +88,7 @@ button:hover {
 #custom-power,
 #custom-reboot,
 #custom-suspend,
+#custom-notification,
 #language,
 #mpd {
     padding: 0 10px;
@@ -101,6 +101,7 @@ button:hover {
 #custom-power:hover,
 #custom-reboot:hover,
 #custom-suspend:hover,
+#custom-notification:hover,
 #power-profiles-daemon:hover {
     background-color: @var-color-hover;
 }
