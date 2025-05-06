@@ -203,9 +203,24 @@ bar {
 }
 
 # Enforce window borders for every window
-for_window [class=".*"] border pixel 3
+# for_window [class=".*"] border pixel 3
+default_border pixel 3
 
 # Hide borders for one-window workspaces
 hide_edge_borders smart
+
+# Colors
+set $bg #080808
+set $bg_2 #242424
+set $fg #cfcfcf
+set $green #98971a
+set $blue #4585f8
+
+# class                 border  bground text    indicator child_border
+client.focused          $fg     $bg     $bg     $blue     $fg
+client.focused_inactive $bg_2   $bg_2   $fg     $blue     $bg
+client.unfocused        $bg_2   $bg_2   $fg     $blue     $bg
+client.urgent           $green  $green  $fg     $blue     $fg
+client.placeholder      $fg     $bg     $bg     $blue     $fg
 
 include /etc/sway/config.d/*
