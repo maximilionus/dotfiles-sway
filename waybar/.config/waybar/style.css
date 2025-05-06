@@ -138,10 +138,6 @@ button:hover {
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
 label:focus {
     background-color: #000000;
 }
