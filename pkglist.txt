@@ -4,8 +4,8 @@ sway-contrib
 swaync
 swayidle
 swaylock
-wmenu
 waybar
+rofi-wayland
 brightnessctl
 playerctl
 pavucontrol
