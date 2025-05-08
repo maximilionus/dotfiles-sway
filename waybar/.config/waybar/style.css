@@ -93,7 +93,7 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: @var-color-fg;
-    background-color: rgb(24, 24, 24);
+    background-color: transparent;
     border-radius: 12px;
 }
 
@@ -119,6 +119,7 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
+    border-radius: 12px;
 }
 
 @keyframes blink {
@@ -154,10 +155,6 @@ label:focus {
 
 #idle_inhibitor {
     background-color: #2d3436;
-}
-
-#scratchpad {
-    background: @var-color-1;
 }
 
 #scratchpad.empty {

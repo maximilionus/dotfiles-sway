@@ -17,14 +17,14 @@
     "modules-right": [
         "tray",
         "backlight",
+        "battery#bat2",
+        "battery",
         "network",
         "pulseaudio",
         "keyboard-state",
         "custom/notification",
-        "clock",
         "sway/language",
-        "battery#bat2",
-        "battery",
+        "clock",
         "group/power-control"
     ],
     "group/power-control": {
