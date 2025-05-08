@@ -226,6 +226,10 @@ default_border pixel 2
 # Hide borders for one-window workspaces
 hide_edge_borders smart
 
+# Disable any idle timers for fullscreen apps on both Wayland and XWayland
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
 # Colors
 set $bg #080808
 set $bg_2 #808080
