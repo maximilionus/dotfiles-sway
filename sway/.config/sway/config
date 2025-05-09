@@ -9,6 +9,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
+# Advanced workspace controller script
+set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
 # Your preferred lockscreen
 set $locker swaylock -f -c 000000 -s fill -i ~/Pictures/Wallpaper
 # Your preferred application launcher
@@ -122,17 +124,28 @@ exec swayidle -w \
 #
 # Workspaces:
 #
+    # Set workspace layer
+    bindsym $mod+Alt+1 exec $workspace_ctl set-layer 1
+    bindsym $mod+Alt+2 exec $workspace_ctl set-layer 2
+    bindsym $mod+Alt+3 exec $workspace_ctl set-layer 3
+    bindsym $mod+Alt+4 exec $workspace_ctl set-layer 4
+    bindsym $mod+Alt+5 exec $workspace_ctl set-layer 5
+    bindsym $mod+Alt+6 exec $workspace_ctl set-layer 6
+    bindsym $mod+Alt+7 exec $workspace_ctl set-layer 7
+    bindsym $mod+Alt+8 exec $workspace_ctl set-layer 8
+    bindsym $mod+Alt+9 exec $workspace_ctl set-layer 9
+    bindsym $mod+Alt+0 exec $workspace_ctl set-layer 0
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+1 exec $workspace_ctl set 1
+    bindsym $mod+2 exec $workspace_ctl set 2
+    bindsym $mod+3 exec $workspace_ctl set 3
+    bindsym $mod+4 exec $workspace_ctl set 4
+    bindsym $mod+5 exec $workspace_ctl set 5
+    bindsym $mod+6 exec $workspace_ctl set 6
+    bindsym $mod+7 exec $workspace_ctl set 7
+    bindsym $mod+8 exec $workspace_ctl set 8
+    bindsym $mod+9 exec $workspace_ctl set 9
+    bindsym $mod+0 exec $workspace_ctl set 10
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
