@@ -16,5 +16,6 @@ Extended controls above vanilla Sway configuration:
     Floating mode switch         : $mod + f
     Floating focus switch        : Alt + Tab
     Full-screen mode switch      : $mod + Shift + f
+    Always-on-top window switch  : $mod + Shift + s
     Set workspace layer (offset) : $mod + Alt + <0..9>
     Cancel object split          : $mod + c
