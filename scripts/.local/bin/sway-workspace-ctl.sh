@@ -9,6 +9,11 @@ get_layer () {
     cat "$LAYER_FILE" 2>/dev/null || echo ""
 }
 
+get_workspace () {
+    number="$1"
+    echo "$(get_layer)$number"
+}
+
 case "$COMMAND" in
     get-layer)
         get_layer
@@ -26,7 +31,10 @@ case "$COMMAND" in
         notify-send "$notify"
         ;;
     set)
-        swaymsg workspace number "$(get_layer)$COMMAND_2"
+        swaymsg workspace number "$(get_workspace $COMMAND_2)"
+        ;;
+    move)
+        swaymsg move container to workspace number "$(get_workspace $COMMAND_2)"
         ;;
     *)
         echo "Unknown command"
