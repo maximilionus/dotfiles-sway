@@ -35,6 +35,7 @@
         },
         "modules": [
             "custom/power",
+            "idle_inhibitor",
             "power-profiles-daemon",
             "custom/suspend",
             "custom/reboot"
@@ -65,8 +66,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {

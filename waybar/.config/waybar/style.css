@@ -98,6 +98,7 @@ button:hover {
 }
 
 #pulseaudio:hover,
+#idle_inhibitor:hover,
 #custom-power:hover,
 #custom-reboot:hover,
 #custom-suspend:hover,
@@ -151,10 +152,6 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
 }
 
 #scratchpad.empty {
