@@ -19,3 +19,5 @@ Extended controls above vanilla Sway configuration:
     Always-on-top window switch  : $mod + Shift + s
     Set workspace layer (offset) : $mod + Alt + <0..9>
     Cancel object split          : $mod + c
+    Turn display power off       : $mod + PgDown
+    Turn display power on        : $mod + PgUp

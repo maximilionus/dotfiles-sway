@@ -228,6 +228,9 @@ exec swayidle -w \
     bindsym XF86AudioPrev exec playerctl previous
     # Open notifications widget
     bindsym $mod+n exec $notification_client
+    # Control display power
+    bindsym $mod+Prior output * dpms on
+    bindsym $mod+Next output * dpms off
 
 #
 # Status Bar:
