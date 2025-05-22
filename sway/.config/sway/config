@@ -12,7 +12,7 @@ set $term kitty
 # Advanced workspace controller script
 set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
 # Your preferred lockscreen
-set $locker swaylock -f -c 000000 -s fill -i ~/Pictures/Wallpaper
+set $locker swaylock -f -c 000000 -s fill -i ~/Pictures/wallpaper
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
 # Preferred notification frontend
@@ -23,7 +23,7 @@ font pango:Inter Bold 10
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/Wallpaper fill
+output * bg ~/Pictures/wallpaper fill
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec swaync
