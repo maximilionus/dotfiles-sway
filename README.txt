@@ -3,15 +3,23 @@ Personal configurations for Sway window manager and other components.
 
 This configuration is intended to be used only on Arch Linux distribution.
 
-To apply it, firstly install all the required packages. Note that this package
-list **does not** contain many essential system components:
-    # cat pkglist.txt | pacman -S -
+To use it, install all the required packages first:
+    # cat pkglist.txt | pacman -S --needed -
+
+Note: This package list contains only packages that are strictly required for
+this desktop environment to work
 
 After that, apply the configurations using gnu-stow:
     $ stow <dir>
 
+Note: GNU-Stow is kinda terrible at dir manipulations, so be sure that basic
+dirs like "~/.local/bin" and "~/.config/profile.d" already exist, so it doesn't
+overlap them, or use the "--no-folding" flag on run. It's either I don't get
+how it works, or it's just terrible by itself... I need to write my own
+dotfiles manager huh.
 
-Extended controls above vanilla Sway configuration:
+
+EXTENDED CONTROLS
     Mod key                      : Meta (Win)
     Floating mode switch         : $mod + f
     Floating focus switch        : Alt + Tab
