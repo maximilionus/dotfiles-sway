@@ -38,7 +38,8 @@
             "idle_inhibitor",
             "power-profiles-daemon",
             "custom/suspend",
-            "custom/reboot"
+            "custom/reboot",
+            "custom/poweroff"
         ]
     },
     "keyboard-state": {
@@ -158,18 +159,22 @@
     },
     "custom/power": {
         "format": "",
-        "tooltip": false,
-        "on-click": "systemctl poweroff"
+        "tooltip": false
     },
-    "custom/suspend": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "systemctl suspend"
+    "custom/poweroff": {
+        "format": "",
+        "tooltip-format": "Shutdown",
+        "on-click": "systemctl poweroff"
     },
     "custom/reboot": {
         "format": "",
-        "tooltip": false,
+        "tooltip-format": "Reboot",
         "on-click": "reboot"
+    },
+    "custom/suspend": {
+        "format": "",
+        "tooltip-format": "Sleep",
+        "on-click": "systemctl suspend"
     },
     "custom/notification": {
         "tooltip": false,

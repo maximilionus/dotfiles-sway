@@ -1,6 +1,6 @@
 @define-color var-color-bg rgba(0, 0, 0, 1.0);
 @define-color var-color-fg rgba(255, 255, 255, 1.0);
-@define-color var-color-hover rgba(84, 55, 128, 1);
+@define-color var-color-hover rgba(128, 128, 128, 1);
 @define-color var-color-1 rgba(24, 24, 24, 1.0);
 
 
@@ -86,6 +86,7 @@ button:hover {
 #power-profiles-daemon,
 #power-control,
 #custom-power,
+#custom-poweroff,
 #custom-reboot,
 #custom-suspend,
 #custom-notification,
@@ -99,7 +100,7 @@ button:hover {
 
 #pulseaudio:hover,
 #idle_inhibitor:hover,
-#custom-power:hover,
+#custom-poweroff:hover,
 #custom-reboot:hover,
 #custom-suspend:hover,
 #custom-notification:hover,
