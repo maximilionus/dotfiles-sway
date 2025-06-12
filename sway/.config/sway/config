@@ -12,7 +12,7 @@ set $term kitty
 # Advanced workspace controller script
 set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
 # Your preferred lockscreen
-set $locker swaylock -f -c 000000 -s fill -i ~/Pictures/wallpaper
+set $locker ~/.local/bin/sway-lock.sh
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
 # Preferred notification frontend
@@ -40,9 +40,8 @@ exec playerctld daemon
 ### Idle configuration
 #
 exec swayidle -w \
-         timeout 300 '$locker' \
-         timeout 0 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep '$locker'
+         timeout 300 'bash $locker' \
+         before-sleep 'bash $locker'
 
 ### Input configuration
 #
