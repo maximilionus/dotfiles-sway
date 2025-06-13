@@ -1,6 +1,5 @@
 @define-color var-color-bg rgba(0, 0, 0, 1.0);
 @define-color var-color-fg rgba(255, 255, 255, 1.0);
-@define-color var-color-hover rgba(128, 128, 128, 1);
 @define-color var-color-1 rgba(24, 24, 24, 1.0);
 
 
@@ -105,7 +104,8 @@ button:hover {
 #custom-suspend:hover,
 #custom-notification:hover,
 #power-profiles-daemon:hover {
-    background-color: @var-color-hover;
+    background-color: @var-color-fg;
+    color: @var-color-bg;
 }
 
 #window,
