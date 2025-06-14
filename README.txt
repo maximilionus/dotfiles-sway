@@ -23,6 +23,7 @@ EXTENDED CONTROLS
     Mod key                      : Meta (Win)
     Floating mode switch         : $mod + f
     Floating focus switch        : Alt + Tab
+    Kill focused window          : #mod + q
     Full-screen mode switch      : $mod + Shift + f
     Always-on-top window switch  : $mod + Shift + s
     Set workspace layer (offset) : $mod + Alt + <0..9>
