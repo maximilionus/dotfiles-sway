@@ -20,13 +20,14 @@ dotfiles manager huh.
 
 
 EXTENDED CONTROLS
-    Mod key                      : Meta (Win)
-    Floating mode switch         : $mod + f
-    Floating focus switch        : Alt + Tab
-    Kill focused window          : #mod + q
-    Full-screen mode switch      : $mod + Shift + f
-    Always-on-top window switch  : $mod + Shift + s
-    Set workspace layer (offset) : $mod + Alt + <0..9>
-    Cancel object split          : $mod + c
-    Turn display power off       : $mod + PgDown
-    Turn display power on        : $mod + PgUp
+    Mod key                                  : Meta (Win)
+    Floating mode switch                     : $mod + f
+    Floating focus switch                    : Alt + Tab
+    Kill focused window                      : $mod + q
+    Resize focused window left/down/up/right : $mod + y/u/i/o
+    Full-screen mode switch                  : $mod + Shift + f
+    Always-on-top window switch              : $mod + Shift + s
+    Set workspace layer (offset)             : $mod + Alt + <0..9>
+    Cancel object split                      : $mod + c
+    Turn display power off                   : $mod + PgDown
+    Turn display power on                    : $mod + PgUp
