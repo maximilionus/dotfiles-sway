@@ -7,6 +7,6 @@ swayidle \
     timeout $POWER_TIMEOUT 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' &
 
-swaylock -c 000000 -s fill -i ~/Pictures/wallpaper
+swaylock
 
 kill %%
