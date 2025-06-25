@@ -41,7 +41,7 @@ exec playerctld daemon
 #
 exec swayidle -w \
          timeout 300 'bash $locker' \
-         before-sleep 'bash $locker'
+         before-sleep 'bash $locker suspend'
 
 ### Input configuration
 #

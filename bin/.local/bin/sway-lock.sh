@@ -1,12 +1,16 @@
 #!/bin/bash
 
-POWER_TIMEOUT=10
+DISPLAY_TIMEOUT=10
 
 
 swayidle \
-    timeout $POWER_TIMEOUT 'swaymsg "output * power off"' \
+    timeout $DISPLAY_TIMEOUT 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' &
 
 swaylock
 
 kill %%
+
+# Restart Waybar after waking up from suspend, as it appears to have corrupted
+# output on some modules (kb language for example).
+[[ $1 == "suspend" ]] && pkill -SIGUSR2 waybar
