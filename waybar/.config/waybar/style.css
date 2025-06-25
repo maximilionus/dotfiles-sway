@@ -4,7 +4,6 @@
 
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: Inter, "Font Awesome 6 Free";
     font-weight: bold;
     font-size: 13px;
@@ -80,8 +79,8 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#power-control,
-#custom-power,
+#control-center,
+#custom-control,
 #custom-poweroff,
 #custom-reboot,
 #custom-suspend,

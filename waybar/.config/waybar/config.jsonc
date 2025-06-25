@@ -21,16 +21,16 @@
         "custom/notification",
         "sway/language",
         "clock",
-        "group/power-control"
+        "group/control-center"
     ],
-    "group/power-control": {
+    "group/control-center": {
         "orientation": "horizontal",
         "drawer": {
             "transition-duration": 100,
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/power",
+            "custom/control",
             "idle_inhibitor",
             "power-profiles-daemon",
             "custom/suspend",
@@ -137,8 +137,8 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/power": {
-        "format": "",
+    "custom/control": {
+        "format": "",
         "tooltip": false
     },
     "custom/poweroff": {
