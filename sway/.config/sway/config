@@ -20,15 +20,17 @@ set $notification_client swaync-client -t -sw
 
 font pango:Inter Bold 10
 
+### Autostart
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start
+exec swaync
+exec udiskie
+exec playerctld daemon
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/Pictures/wallpaper fill
-
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec swaync
-exec udiskie
-exec playerctld daemon
 
 #
 # Example configuration:
