@@ -104,6 +104,11 @@ button:hover {
     color: @var-color-bg;
 }
 
+#control-center:hover
+{
+    border: 1px solid @var-color-fg
+}
+
 #window,
 #workspaces {
     margin: 0 4px;
