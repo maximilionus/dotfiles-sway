@@ -24,6 +24,7 @@ EXTENDED CONTROLS
     Floating mode switch                     : $mod + f
     Floating focus switch                    : Alt + Tab
     Kill focused window                      : $mod + q
+    Kill (SIGKILL) focused window            : $mod + Shift + q
     Resize focused window left/down/up/right : $mod + y/u/i/o
     Full-screen mode switch                  : $mod + Shift + f
     Always-on-top window switch              : $mod + Shift + s
