@@ -26,7 +26,7 @@ EXTENDED CONTROLS
     Kill focused window                      : $mod + q
     Kill (SIGKILL) focused window            : $mod + Shift + q
     Resize focused window left/down/up/right : $mod + y/u/i/o
-    Full-screen mode switch                  : $mod + Shift + f
+    Full-screen mode switch                  : $mod + m
     Always-on-top window switch              : $mod + Shift + s
     Set workspace layer (offset)             : $mod + Alt + <0..9>
     Cancel object split                      : $mod + c

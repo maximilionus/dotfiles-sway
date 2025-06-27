@@ -182,7 +182,7 @@ exec swayidle -w \
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+Shift+f fullscreen
+    bindsym $mod+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+f floating toggle
