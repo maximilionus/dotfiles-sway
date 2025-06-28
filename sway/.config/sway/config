@@ -11,7 +11,9 @@ set $right l
 set $term kitty
 # Advanced workspace controller script
 set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
-# Your preferred lockscreen
+# Screenshoting script
+set $screenshot ~/.local/bin/sway-screenshot.sh
+# Preferred lockscreen
 set $locker ~/.local/bin/sway-lock.sh
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
@@ -219,11 +221,8 @@ exec swayidle -w \
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special keys to take a screenshots with grim
-    bindsym Shift+Print exec grim -t png ~/Pictures/"$(date +%Y%m%d-%H%M%S)".png \
-        && notify-send "Screenshot (Full screen)" "Saved to Pictures"
-    bindsym Print exec bash -c \
-        'region=$(slurp -d) && [ -n "$region" ] && grim -g "$region" - | wl-copy \
-        && notify-send "Screenshot (Selection)" "Saved to clipboard"'
+    bindsym Shift+Print exec $screenshot
+    bindsym Print exec $screenshot crop-to-clipboard
 
 
     # Special keys to control media playback

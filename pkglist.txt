@@ -1,11 +1,16 @@
 sway
 swaybg
-sway-contrib
 swaync
 swayidle
 swaylock
 waybar
 rofi-wayland
+libnotify
+grim
+imv
+jq
+slurp
+wl-clipboard
 brightnessctl
 playerctl
 pavucontrol
