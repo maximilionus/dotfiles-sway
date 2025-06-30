@@ -7,9 +7,7 @@
         "sway/mode",
         "sway/scratchpad"
     ],
-    "modules-center": [
-        "sway/window"
-    ],
+    "modules-center": [],
     "modules-right": [
         "tray",
         "backlight",
@@ -49,9 +47,6 @@
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/window": {
-        "max-length": 50
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
