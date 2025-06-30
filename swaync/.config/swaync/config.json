@@ -41,6 +41,7 @@
     }
   },
   "widgets": [
+    "volume",
     "mpris",
     "inhibitors",
     "title",
@@ -69,6 +70,14 @@
       "image-size": 96,
       "image-radius": 12,
       "blacklist": []
+    },
+    "volume": {
+        "label": "",
+        "show-per-app": true,
+        "show-per-app-icon": true,
+        "show-per-app-label":true,
+        "expand-button-label": "",
+        "collapse-button-label": ""
     },
     "buttons-grid": {
       "actions": [
