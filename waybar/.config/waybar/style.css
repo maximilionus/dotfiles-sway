@@ -104,7 +104,8 @@ button:hover {
 
 #control-center:hover
 {
-    border: 2px solid @color-fg
+    margin: 1px 0;
+    box-shadow: 0px -1px 2px @color-fg;
 }
 
 #window,
