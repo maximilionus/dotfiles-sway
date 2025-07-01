@@ -1,6 +1,6 @@
-@define-color var-color-bg rgba(0, 0, 0, 1.0);
-@define-color var-color-fg rgba(255, 255, 255, 1.0);
-@define-color var-color-1 rgba(24, 24, 24, 1.0);
+@define-color color-bg rgba(0, 0, 0, 1.0);
+@define-color color-fg rgba(255, 255, 255, 1.0);
+@define-color color-button-hover rgba(100, 100, 100, 1.0);
 
 
 * {
@@ -10,8 +10,8 @@
 }
 
 window#waybar {
-    background-color: @var-color-bg;
-    color: @var-color-fg;
+    background-color: @color-bg;
+    color: @color-fg;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -25,14 +25,12 @@ window#waybar.empty {
     background-color: transparent;
 }
 window#waybar.solo {
-    background-color: @var-color-fg;
+    background-color: @color-fg;
 }
 */
 
 button {
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 6px;
+    border-radius: 16px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -43,16 +41,16 @@ button:hover {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: @var-color-fg;
+    color: @color-fg;
 }
 
 #workspaces button:hover {
-    background: @var-color-1;
+    background: @color-button-hover;
 }
 
 #workspaces button.focused {
-    color: @var-color-bg;
-    background-color: @var-color-fg;
+    color: @color-bg;
+    background-color: @color-fg;
 }
 
 #workspaces button.urgent {
@@ -61,7 +59,7 @@ button:hover {
 
 #mode {
     background-color: #64727D;
-    box-shadow: inset 0 -3px @var-color-fg;
+    box-shadow: inset 0 -3px @color-fg;
 }
 
 #clock,
@@ -88,9 +86,9 @@ button:hover {
 #language,
 #mpd {
     padding: 0 10px;
-    color: @var-color-fg;
+    color: @color-fg;
     background-color: transparent;
-    border-radius: 6px;
+    border-radius: 16px;
 }
 
 #pulseaudio:hover,
@@ -100,13 +98,13 @@ button:hover {
 #custom-suspend:hover,
 #custom-notification:hover,
 #power-profiles-daemon:hover {
-    background-color: @var-color-fg;
-    color: @var-color-bg;
+    background-color: @color-fg;
+    color: @color-bg;
 }
 
 #control-center:hover
 {
-    border: 1px solid @var-color-fg
+    border: 2px solid @color-fg
 }
 
 #window,
@@ -122,20 +120,20 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-    border-radius: 6px;
+    border-radius: 16px;
 }
 
 @keyframes blink {
     to {
-        background-color: @var-color-fg;
+        background-color: @color-fg;
         color: #000000;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: @var-color-bg;
-    color: @var-color-fg;
+    background-color: @color-bg;
+    color: @color-fg;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -153,7 +151,7 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: @var-color-fg;
+    background-color: @color-fg;
 }
 
 #scratchpad.empty {
