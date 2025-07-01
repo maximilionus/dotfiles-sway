@@ -258,17 +258,18 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 seat * hide_cursor 8000
 
 # Colors
-set $dark   #02020200
-set $dark_2 #484848
-set $dark_3 #9F9F9F
-set $light  #CFCFCF
-set $blue   #4A8BE3
+set $transparent #00000000
+set $dark        #020202
+set $dark_2      #484848
+set $dark_3      #9F9F9F
+set $light       #CFCFCF
+set $blue        #4A8BE3
 
-# class                 border  bground text    indicator child_border
-client.focused          $dark_3   $dark_3   $light     $blue     $dark_3
-client.focused_inactive $dark     $dark     $light     $dark     $dark
-client.unfocused        $dark     $dark     $light     $blue     $dark
-client.urgent           $dark_2   $dark_2   $light     $blue     $dark_2
-client.placeholder      $light    $dark     $dark      $blue     $light
+# class                 border    bground     text    indicator     child_border
+client.focused          $dark_3 $dark_3 $dark $blue $dark_3
+client.focused_inactive $dark_2 $dark_2 $light $dark_2 $dark
+client.unfocused        $transparent $dark $light $blue $transparent
+client.urgent           $dark_2 $dark_2 $light $blue $dark_2
+client.placeholder      $light $dark  $dark $blue $light
 
 include /etc/sway/config.d/*
