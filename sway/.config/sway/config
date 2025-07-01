@@ -20,7 +20,7 @@ set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && 
 # Preferred notification frontend
 set $notification_client swaync-client -t -sw
 
-font pango:Inter Bold 10
+font pango:Inter Bold 9
 
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
