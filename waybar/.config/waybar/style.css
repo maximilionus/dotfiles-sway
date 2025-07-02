@@ -30,7 +30,9 @@ window#waybar.solo {
 */
 
 button {
-    border-radius: 16px;
+    min-height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
