@@ -29,6 +29,8 @@ EXTENDED CONTROLS
     Full-screen mode switch                  : $mod + m
     Always-on-top window switch              : $mod + Shift + s
     Set workspace layer (offset)             : $mod + Alt + <0..9>
+    Object horizontal split                  : $mod + g
+    Object vertical split                    : $mod + v
     Cancel object split                      : $mod + c
     Screenshot (Selection to clibboard)      : PrntScr
     Screenshot (Active screen to file)       : Shift + PrntScr
