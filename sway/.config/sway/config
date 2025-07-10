@@ -79,7 +79,7 @@ exec swayidle -w \
 
     # Kill focused window
     bindsym $mod+q kill
-    bindsym $mod+Shift+q kill -9
+    bindsym $mod+Shift+q exec bash -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
     # Start your launcher
     bindsym $mod+Tab exec $menu
