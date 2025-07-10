@@ -21,6 +21,7 @@ dotfiles manager huh.
 
 EXTENDED CONTROLS
     Mod key                                  : Meta (Win)
+    Runner                                   : $mod + Tab
     Floating mode switch                     : $mod + f
     Floating focus switch                    : Alt + Tab
     Kill focused window                      : $mod + q
