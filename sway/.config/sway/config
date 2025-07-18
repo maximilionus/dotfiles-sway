@@ -17,8 +17,6 @@ set $screenshot ~/.local/bin/sway-screenshot.sh
 set $locker ~/.local/bin/sway-lock.sh
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
-# Preferred notification frontend
-set $notification_client swaync-client -t -sw
 
 font pango:Inter Bold 9
 
@@ -230,8 +228,6 @@ exec swayidle -w \
     bindsym XF86AudioPause exec playerctl play-pause
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
-    # Open notifications widget
-    bindsym $mod+n exec $notification_client
     # Control display power
     bindsym $mod+Prior output * dpms on
     bindsym $mod+Next output * dpms off
