@@ -25,7 +25,7 @@ font pango:Inter Bold 9
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
-exec swaync
+exec dunst
 exec udiskie
 exec playerctld daemon
 

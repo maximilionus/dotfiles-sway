@@ -1,11 +1,11 @@
 sway
 swaybg
-swaync
 swayidle
 swaylock
 waybar
 rofi-wayland
 libnotify
+dunst
 grim
 imv
 jq
