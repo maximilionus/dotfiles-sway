@@ -22,13 +22,16 @@ dotfiles manager huh.
 EXTENDED CONTROLS
     Mod key                                  : Meta (Win)
     Runner                                   : $mod + Tab
+    Split mode                               : $mod + e
+    Tabbed mode                              : $mod + w
+    Stacking (Vertical tabs) mode            : $mod + Shift + w
     Floating mode switch                     : $mod + f
     Floating focus switch                    : Alt + Tab
     Kill focused window                      : $mod + q
     Kill (SIGKILL) focused window            : $mod + Shift + q
     Resize focused window left/down/up/right : $mod + y/u/i/o
     Full-screen mode switch                  : $mod + m
-    Always-on-top window switch              : $mod + Shift + s
+    Always-on-top mode                       : $mod + s
     Set workspace layer (offset)             : $mod + Alt + <0..9>
     Object horizontal split                  : $mod + g
     Object vertical split                    : $mod + v
