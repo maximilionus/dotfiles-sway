@@ -13,6 +13,7 @@
         "backlight",
         "battery#bat2",
         "battery",
+        "bluetooth",
         "network",
         "pulseaudio",
         // "keyboard-state",
@@ -114,11 +115,17 @@
         "format-linked": "",
         "format-disconnected": ""
     },
+    "bluetooth": {
+        "format": "{status}",
+        "format-on": "",
+        "format-disabled": "",
+        "tooltip": false
+    },
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{volume}% {icon}    {format_source}",
         "format-bluetooth": "{volume}% {icon}    {format_source}",
-        "format-bluetooth-muted": " {icon}    {format_source}",
+        "format-bluetooth-muted": "  {icon}    {format_source}",
         "format-muted": "    {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",

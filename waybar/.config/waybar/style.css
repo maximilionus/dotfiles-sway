@@ -72,6 +72,7 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #wireplumber,
 #tray,
@@ -109,6 +110,13 @@ button:hover {
     margin: 1px 0;
     box-shadow: 0px -1px 2px @color-fg;
 }
+
+/* Hack to make icon the same size as other modules */
+#bluetooth
+{
+    font-size: 17px;
+}
+
 
 #window,
 #workspaces {
