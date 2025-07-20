@@ -118,6 +118,7 @@
     "bluetooth": {
         "format": "{status}",
         "format-on": "<span font_size=\"125%\"></span>",
+        "format-connected": "<span font_size=\"125%\"></span><sup></sup>",
         "format-disabled": "",
         "tooltip": false
     },
