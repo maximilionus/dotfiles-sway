@@ -254,7 +254,7 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 seat * hide_cursor 8000
 
 # Colors
-set $dark        #020202
+set $dark        #080808
 set $dark_2      #484848
 set $dark_3      #9F9F9F
 set $light       #CFCFCF
