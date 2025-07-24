@@ -35,9 +35,11 @@ button {
     border-radius: 50%;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    background: none;
 }
 
 #workspaces button {
