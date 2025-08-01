@@ -16,10 +16,10 @@ set_gsettings_theme () {
 
 
 case $1 in
-    light|0)
+    l*|0)
         set_gsettings_theme light
         ;;
-    dark|1)
+    d*|1)
         set_gsettings_theme dark
         ;;
 esac
