@@ -173,7 +173,7 @@
         "exec-if": "pidof dunst",
         "exec": "~/.local/bin/waybar-dunst-integration.sh",
         "return-type": "json",
-        "on-click-right": "dunstctl set-paused toggle",
+        "on-click": "dunstctl set-paused toggle",
         "tooltip": false
     }
 }
