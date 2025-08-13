@@ -76,6 +76,7 @@ button:hover {
 #network,
 #bluetooth,
 #pulseaudio,
+#mpris,
 #wireplumber,
 #tray,
 #mode,
@@ -97,6 +98,7 @@ button:hover {
 }
 
 #pulseaudio:hover,
+#mpris:hover,
 #idle_inhibitor:hover,
 #custom-poweroff:hover,
 #custom-reboot:hover,
