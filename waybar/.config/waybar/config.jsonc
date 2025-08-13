@@ -15,7 +15,6 @@
         "battery",
         "bluetooth",
         "network",
-        "mpris",
         "pulseaudio",
         // "keyboard-state",
         "custom/notification",
@@ -141,14 +140,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "mpris" : {
-        "format": "{player}  {status_icon}",
-        "status-icons": {
-            "playing": "",
-            "paused": ""
-        },
-        "tooltip-format": "{dynamic} | {status}"
     },
     "custom/control": {
         "format": "",
