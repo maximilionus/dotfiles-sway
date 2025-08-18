@@ -32,8 +32,8 @@
             "custom/control",
             "idle_inhibitor",
             "power-profiles-daemon",
-            "custom/suspend",
             "custom/reboot",
+            "custom/suspend",
             "custom/poweroff"
         ]
     },
@@ -148,17 +148,17 @@
     "custom/poweroff": {
         "format": "",
         "tooltip-format": "Shutdown",
-        "on-click": "systemctl poweroff"
-    },
-    "custom/reboot": {
-        "format": "",
-        "tooltip-format": "Reboot",
-        "on-click": "reboot"
+        "on-click": "rofi -dmenu -i -p 'Shutdown?' <<< 'No\nYes' | grep -q Yes && systemctl poweroff"
     },
     "custom/suspend": {
         "format": "",
         "tooltip-format": "Sleep",
-        "on-click": "systemctl suspend"
+        "on-click": "rofi -dmenu -i -p 'Suspend?' <<< 'No\nYes' | grep -q Yes && systemctl suspend"
+    },
+    "custom/reboot": {
+        "format": "",
+        "tooltip-format": "Reboot",
+        "on-click": "rofi -dmenu -i -p 'Reboot?' <<< 'No\nYes' | grep -q Yes && reboot"
     },
     "custom/notification": {
         "exec-if": "pidof dunst",
