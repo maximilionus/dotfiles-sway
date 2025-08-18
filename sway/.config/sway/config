@@ -268,3 +268,4 @@ client.urgent           $dark_2 $dark_2 $light $blue $dark_2
 client.placeholder      $light $dark  $dark $blue $light
 
 include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*

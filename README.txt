@@ -1,22 +1,26 @@
 Personal configurations for Sway window manager and other components.
 
 
-This configuration is intended to be used only on Arch Linux distribution.
+This configuration is intended to be used on Arch Linux.
 
-To use it, install all the required packages first:
+To apply it, firstly install all the required packages:
     # cat pkglist.txt | pacman -S --needed -
 
-Note: This package list contains only packages that are strictly required for
-this desktop environment to work
+    Note: This package list contains **only** packages that are strictly
+    required for this desktop environment to work.
 
 After that, apply the configurations using gnu-stow:
     $ stow <dir>
 
-Note: GNU-Stow is kinda terrible at dir manipulations, so be sure that basic
+Note: GNU-Stow is kinda strange at dir manipulations, so be sure that basic
 dirs like "~/.local/bin" and "~/.config/profile.d" already exist, so it doesn't
-overlap them, or use the "--no-folding" flag on run. It's either I don't get
-how it works, or it's just terrible by itself... I need to write my own
+symlink them, or use the "--no-folding" flag on run. It's either I don't get
+how it works, or it's just how it works by design... I need to write my own
 dotfiles manager huh.
+
+
+You can also add modular configurations to Sway by putting the .conf files in:
+    "~/.config/sway/config.d/"
 
 
 EXTENDED CONTROLS
