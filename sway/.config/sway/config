@@ -76,8 +76,8 @@ exec swayidle -w \
     bindsym $mod+Escape exec $locker
 
     # Kill focused window
-    bindsym $mod+q kill
-    bindsym $mod+Shift+q exec bash -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
+    bindsym --to-code $mod+q kill
+    bindsym --to-code $mod+Shift+q exec bash -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
     # Start your launcher
     bindsym $mod+Tab exec $menu
@@ -90,10 +90,10 @@ exec swayidle -w \
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym --to-code $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym --to-code $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -109,10 +109,10 @@ exec swayidle -w \
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym --to-code $mod+Shift+$left move left
+    bindsym --to-code $mod+Shift+$down move down
+    bindsym --to-code $mod+Shift+$up move up
+    bindsym --to-code $mod+Shift+$right move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -120,10 +120,10 @@ exec swayidle -w \
     bindsym $mod+Shift+Right move right
 
     # Resize focused window preserving directions
-    bindsym $mod+y exec "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
-    bindsym $mod+u exec "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
-    bindsym $mod+i exec "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
-    bindsym $mod+o exec "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
+    bindsym --to-code $mod+y exec "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
+    bindsym --to-code $mod+u exec "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
+    bindsym --to-code $mod+i exec "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
+    bindsym --to-code $mod+o exec "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
 #
 # Workspaces:
 #
@@ -172,29 +172,29 @@ exec swayidle -w \
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+g splith
-    bindsym $mod+v splitv
-    bindsym $mod+c split none
+    bindsym --to-code $mod+g splith
+    bindsym --to-code $mod+v splitv
+    bindsym --to-code $mod+c split none
 
     # Switch the current container between different layout styles
-    bindsym $mod+e layout toggle split
-    bindsym $mod+w layout tabbed
-    bindsym $mod+Shift+w layout stacking
+    bindsym --to-code $mod+e layout toggle split
+    bindsym --to-code $mod+w layout tabbed
+    bindsym --to-code $mod+Shift+w layout stacking
 
     # Make the current focus fullscreen
-    bindsym $mod+m fullscreen
+    bindsym --to-code $mod+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+f floating toggle
+    bindsym --to-code $mod+f floating toggle
 
     # Toggle always-on-top mode
-    bindsym $mod+s sticky toggle
+    bindsym --to-code $mod+s sticky toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym Alt+Tab focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindsym --to-code $mod+a focus parent
 #
 # Scratchpad:
 #
