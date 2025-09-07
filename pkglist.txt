@@ -3,7 +3,7 @@ swaybg
 swayidle
 swaylock
 waybar
-rofi-wayland
+rofi
 libnotify
 dunst
 grim
