@@ -10,7 +10,3 @@ swayidle \
 swaylock
 
 kill %%
-
-# Restart Waybar after waking up from suspend, as it appears to have corrupted
-# output on some modules (kb language for example).
-[[ $1 == "suspend" ]] && pkill -SIGUSR2 waybar

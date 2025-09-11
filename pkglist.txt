@@ -2,10 +2,10 @@ sway
 swaybg
 swayidle
 swaylock
-waybar
 rofi
 libnotify
 dunst
+jq
 grim
 imv
 jq

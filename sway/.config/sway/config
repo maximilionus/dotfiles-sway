@@ -15,6 +15,8 @@ set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
 set $screenshot ~/.local/bin/sway-screenshot.sh
 # Preferred lockscreen
 set $locker ~/.local/bin/sway-lock.sh
+# Script for swaybar status generation
+set $swaybar_script ~/.local/bin/swaybar-status-command.sh
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
 
@@ -237,8 +239,21 @@ exec swayidle -w \
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar
+    position top
+    pango_markup enabled
+    tray_padding 4
+
+    status_command while true; do $swaybar_script; sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #000000
+        inactive_workspace #000000 #000000 #f0f0f0
+        active_workspace #646464 #646464 #000000
+        focused_workspace #ffffff #ffffff #000000
+    }
 }
+
 
 # Enforce window borders for every window
 default_border pixel 2
