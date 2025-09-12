@@ -20,7 +20,9 @@ set $swaybar_script ~/.local/bin/swaybar-status-command.sh
 # Your preferred application launcher
 set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
 
+### Global font settings
 font pango:Inter Bold 9
+output * subpixel none
 
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
