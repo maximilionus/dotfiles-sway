@@ -99,7 +99,7 @@ modules=()
 [[ -n "$bluetooth_module" ]]     && modules+=("  $bluetooth_module")
 [[ -n "$network_module" ]]       && modules+=("  $network_module")
 [[ -n "$audio_module" ]]         && modules+=("  $audio_module")
-[[ -n "$notifications_module" ]] && modules+=("  $notifications_module")
+[[ -n "$notifications_module" ]] && modules+=("   $notifications_module")
 [[ -n "$keyboard_module" ]]      && modules+=(" $keyboard_module")
 [[ -n "$date_module" ]]          && modules+=("    $date_module ")
 
