@@ -127,9 +127,9 @@ notifications_module=""
 # Margin... using spaces. Sorry not sorry :)
 modules=()
 
-[[ -n "$backlight_module" ]]     && modules+=("  $backlight_module")
-[[ -n "$battery_module" ]]       && modules+=("  $battery_module")
-[[ -n "$bluetooth_module" ]]     && modules+=("  $bluetooth_module")
+[[ -n "$backlight_module" ]]     && modules+=("   $backlight_module")
+[[ -n "$battery_module" ]]       && modules+=("   $battery_module")
+[[ -n "$bluetooth_module" ]]     && modules+=("   $bluetooth_module")
 [[ -n "$network_module" ]]       && modules+=("  $network_module")
 [[ -n "$audio_module" ]]         && modules+=("  $audio_module")
 [[ -n "$notifications_module" ]] && modules+=("   $notifications_module")
