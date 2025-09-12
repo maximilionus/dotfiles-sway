@@ -251,6 +251,7 @@ bar {
         inactive_workspace #000000 #000000 #f0f0f0
         active_workspace #646464 #646464 #000000
         focused_workspace #ffffff #ffffff #000000
+        urgent_workspace #4a8be3 #4a8be3 #ffffff
     }
 }
 
