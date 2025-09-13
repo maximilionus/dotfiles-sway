@@ -2,13 +2,12 @@ sway
 swaybg
 swayidle
 swaylock
-rofi
+wmenu
+jq
 libnotify
 dunst
-jq
 grim
 imv
-jq
 slurp
 wl-clipboard
 brightnessctl
@@ -22,4 +21,3 @@ xdg-desktop-portal-gtk
 gnome-themes-extra
 gnome-keyring
 polkit-gnome
-otf-font-awesome

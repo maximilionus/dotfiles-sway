@@ -15,10 +15,11 @@ set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
 set $screenshot ~/.local/bin/sway-screenshot.sh
 # Preferred lockscreen
 set $locker ~/.local/bin/sway-lock.sh
-# Script for swaybar status generation
+# Swaybar status generation
 set $swaybar_script ~/.local/bin/swaybar-status-command.sh
-# Your preferred application launcher
-set $menu rofi -show combi -run-shell-command '{terminal} -e bash -ic "{cmd} && read"'
+# Application launcher
+set $menu wmenu-run -p "Execute" -f "Sans-serif 14" -i \
+    -N 080808 -n ffffff -S ffffff -s 000000 -M c8c8c8 -m 000000
 
 ### Global font settings
 font pango:Inter Bold 9
