@@ -133,6 +133,15 @@ exec swayidle -w \
         "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
     bindsym --to-code $mod+o exec \
         "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
+
+    bindsym --to-code $mod+Shift+y exec \
+        "swaymsg resize grow left 2 px or 2 ppt || swaymsg resize shrink right 2 px or 2 ppt"
+    bindsym --to-code $mod+Shift+u exec \
+        "swaymsg resize grow down 2 px or 2 ppt || swaymsg resize shrink up 2 px or 2 ppt"
+    bindsym --to-code $mod+Shift+i exec \
+        "swaymsg resize grow up 2 px or 2 ppt || swaymsg resize shrink down 2 px or 2 ppt"
+    bindsym --to-code $mod+Shift+o exec \
+        "swaymsg resize grow right 2 px or 2 ppt || swaymsg resize shrink left 2 px or 2 ppt"
 #
 # Workspaces:
 #

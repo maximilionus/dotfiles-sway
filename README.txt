@@ -33,7 +33,7 @@ EXTENDED CONTROLS
     Floating focus switch                    : Alt + Tab
     Kill focused window                      : $mod + q
     Kill (SIGKILL) focused window            : $mod + Shift + q
-    Resize focused window left/down/up/right : $mod + y/u/i/o
+    Resize focused window left/down/up/right : $mod (+ Shift) + y/u/i/o
     Full-screen mode switch                  : $mod + m
     Always-on-top mode                       : $mod + s
     Set workspace layer (offset)             : $mod + Alt + <0..9>
