@@ -10,15 +10,20 @@ USAGE
         $ stow <dir>
 
 NOTES
+    These configurations are very heavily reliant on the main dotfiles
+    repository and will not work properly if the user shell is not Zsh and
+    don't have the zsh dotfiles already installed.
+
     GNU Stow is kinda strange at dir manipulations, so be sure that basic dirs
     like "~/.local/bin" and "~/.config/profile.d" already exist before running
     the stow command, so it doesn't symlink them, or use the "--no-folding"
     flag on run. It's either I don't get how it works, or it's just how it
-    works by design... I need to write my own dotfiles manager huh.
+    works by design... I need to write my own dotfiles manager huh:
 
+        $ mkdir -p ~/.local/bin ~/.config/profile.d
 
     You can also add modular configurations to Sway by putting the .conf files
-    in: "~/.config/sway/config.d/"
+    in "~/.config/sway/config.d/".
 
 
 EXTENDED CONTROLS
