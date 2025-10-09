@@ -32,19 +32,20 @@ EXTENDED CONTROLS
     Exit window manager                      - mod + Shift + Escape
     Screen lock                              - mod + Escape
     Split mode                               - mod + e
-    Tabbed mode                              - mod + w
-    Stacking (Vertical tabs) mode            - mod + Shift + w
+    Tabbed mode                              - mod (+ Shift) + w
+        * Hold Shift for Stacking (Vertical tabs) mode
     Floating mode switch                     - mod + f
     Floating focus switch                    - Alt + Tab
-    Kill focused window                      - mod + q
-    Kill (SIGKILL) focused window            - mod + Shift + q
+    Kill focused window                      - mod (+ Shift) + q
+        * Hold Shift to send SIGKILL (-9)
     Resize focused window left/down/up/right - mod (+ Shift) + y/u/i/o
+        * Hold Shift for precise resize
     Full-screen mode switch                  - mod + m
     Always-on-top mode                       - mod + s
     Set workspace layer (offset)             - mod + Alt + <0..9>
-    Object horizontal split                  - mod + g
-    Object vertical split                    - mod + v
-    Cancel object split                      - mod + c
+    Tile horizontal split                    - mod + g
+    Tile vertical split                      - mod + v
+    Cancel tile split                        - mod + c
     Screenshot (Selection to clibboard)      - PrntScr
     Screenshot (Active screen to file)       - Shift + PrntScr
     Turn display power off                   - mod + PgDown
