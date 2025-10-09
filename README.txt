@@ -22,8 +22,12 @@ NOTES
 
         $ mkdir -p ~/.local/bin ~/.config/profile.d
 
+    Wallpaper is automatically loaded from this path:
+        ~/Pictures/wallpaper
+
     You can also add modular configurations to Sway by putting the .conf files
-    in "~/.config/sway/config.d/".
+    in:
+        ~/.config/sway/config.d/
 
 
 EXTENDED CONTROLS
