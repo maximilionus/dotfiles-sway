@@ -99,7 +99,7 @@ exec swayidle -w \
     bindsym --to-code $mod+Shift+c reload
 
     # Exit Sway
-    bindsym --to-code $mod+Shift+Escape exec printf "Yes\nNo" \
+    bindsym --to-code $mod+Shift+Escape exec printf "No\nYes" \
         | wmenu $wmenu_args -p "Exit SwayWM?" \
         | grep -q Yes && swaymsg exit
 #
