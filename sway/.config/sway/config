@@ -18,8 +18,9 @@ set $locker ~/.local/bin/sway-lock.sh
 # Swaybar status generation
 set $swaybar_script ~/.local/bin/swaybar-status-command.sh
 # Application launcher
-set $menu wmenu-run -p "Execute" -f "Sans-serif 14" -i \
+set $wmenu_args -f "Sans-serif 14" -i \
     -N 080808 -n ffffff -S ffffff -s 000000 -M c8c8c8 -m 000000
+set $menu wmenu-run $wmenu_args -p "Execute"
 
 ### Global font settings
 font pango:Inter Bold 9
@@ -97,8 +98,10 @@ exec swayidle -w \
     # Reload the configuration file
     bindsym --to-code $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym --to-code $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # Exit Sway
+    bindsym --to-code $mod+Shift+Escape exec printf "Yes\nNo" \
+        | wmenu $wmenu_args -p "Exit SwayWM?" \
+        | grep -q Yes && swaymsg exit
 #
 # Moving around:
 #
