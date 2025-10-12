@@ -18,48 +18,57 @@ NOTIFICATIONS_MUTED_ICON=""
 date_module=$(date +'%e  %a  %H:%M')
 
 # Keyboard
-keyboard_module=" $KB_ICON$(swaymsg -t get_inputs \
-    | jq -r '.[] | select(.type=="keyboard") | .xkb_active_layout_name' \
-    | head -n1 \
-    | cut -d' ' -f1 \
-    | cut -c1-2)"
+keyboard_module="$KB_ICON"
+
+keyboard_module_fnc() {
+    keyboard_module="$keyboard_module$(swaymsg -t get_inputs \
+        | jq -r '.[] | select(.type=="keyboard") | .xkb_active_layout_name' \
+        | head -n1 \
+        | cut -d' ' -f1 \
+        | cut -c1-2)"
+}
+keyboard_module_fnc
 
 # Audio
 audio_module=""
 
-{
+audio_module_fnc() {
     audio_pipewire=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     audio_module=$(echo "$audio_pipewire" | awk '{print $2*100}')
     audio_module=$(echo "$audio_pipewire" | grep -q MUTED \
         && echo "$VOLUME_MUTED_ICON" || echo "$VOLUME_ACTIVE_ICON$audio_module%")
 }
+audio_module_fnc
 
 # Battery
 battery_module=""
 
-{
+battery_module_fnc() {
     battery_status=$(ls /sys/class/power_supply/ | grep BAT | head -n1)
 
-    if [[ ! -z $battery_status ]]; then
-        capacity=$(cat /sys/class/power_supply/$battery_status/capacity)
-        status=$(cat /sys/class/power_supply/$battery_status/status)
-
-        if [[ $status = "Charging" ]]; then
-            icon="$BATTERY_CHARGE_ICON"
-        elif [[ $status = "Discharging" ]]; then
-            icon="$BATTERY_DISCHARGE_ICON"
-        else
-            icon="$BATTERY_FULL_ICON"
-        fi
-
-        battery_module="$icon $capacity%"
+    if [[ -z $battery_status ]]; then
+        return 0
     fi
+
+    capacity=$(cat /sys/class/power_supply/$battery_status/capacity)
+    status=$(cat /sys/class/power_supply/$battery_status/status)
+
+    if [[ $status = "Charging" ]]; then
+        icon="$BATTERY_CHARGE_ICON"
+    elif [[ $status = "Discharging" ]]; then
+        icon="$BATTERY_DISCHARGE_ICON"
+    else
+        icon="$BATTERY_FULL_ICON"
+    fi
+
+    battery_module="$icon $capacity%"
 }
+battery_module_fnc
 
 # Screen backlight
 backlight_module=""
 
-{
+backlight_module_fnc() {
     backlight_dir="/sys/class/backlight"
     device=$(ls "$backlight_dir" 2>/dev/null | head -n1)
 
@@ -70,11 +79,12 @@ backlight_module=""
         backlight_module="$BACKLIGHT_ICON  $percent%"
     fi
 }
+backlight_module_fnc
 
 # Network
 network_module="$NET_DOWN_ICON"
 
-{
+network_module_fnc() {
     default_iface=$(ip route 2>/dev/null | awk '/^default/ {print $5; exit}')
     if [ -n "$default_iface" ]; then
         if [[ $(cat /sys/class/net/"$default_iface"/type) -eq 1 ]]; then
@@ -86,11 +96,16 @@ network_module="$NET_DOWN_ICON"
         fi
     fi
 }
+network_module_fnc
 
 # Bluetooth
 bluetooth_module=""
 
-{
+bluetooth_module_fnc() {
+    if ! systemctl is-active --quiet bluetooth.service; then
+        return 0
+    fi
+
     bluetooth_power=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
     if [ "$bluetooth_power" = "yes" ]; then
         connected=$(bluetoothctl info | grep "Connected: yes")
@@ -102,26 +117,30 @@ bluetooth_module=""
         fi
     fi
 }
+bluetooth_module_fnc
 
 # Notifications
 notifications_module=""
 
-{
-    if pidof dunst > /dev/null; then
-        paused=$(dunstctl is-paused)
-        count=$(dunstctl count waiting)
+notifications_module_fnc() {
+    if ! pidof dunst > /dev/null; then
+        return 0;
+    fi
 
-        if [ "$paused" == "false" ]; then
-            notifications_module="$NOTIFICATIONS_ACTIVE_ICON"
+    paused=$(dunstctl is-paused)
+    count=$(dunstctl count waiting)
+
+    if [ "$paused" == "false" ]; then
+        notifications_module="$NOTIFICATIONS_ACTIVE_ICON"
+    else
+        if [ "$count" != "0" ]; then
+            notifications_module="$NOTIFICATIONS_MUTED_ICON <sup>$count</sup>"
         else
-            if [ "$count" != "0" ]; then
-                notifications_module="$NOTIFICATIONS_MUTED_ICON <sup>$count</sup>"
-            else
-                notifications_module="$NOTIFICATIONS_MUTED_ICON"
-            fi
+            notifications_module="$NOTIFICATIONS_MUTED_ICON"
         fi
     fi
 }
+notifications_module_fnc
 
 # Formatted final output with proper margin
 # Margin... using spaces. Sorry not sorry :)
@@ -133,7 +152,7 @@ modules=()
 [[ -n "$network_module" ]]       && modules+=("  $network_module")
 [[ -n "$audio_module" ]]         && modules+=("  $audio_module")
 [[ -n "$notifications_module" ]] && modules+=("   $notifications_module")
-[[ -n "$keyboard_module" ]]      && modules+=(" $keyboard_module")
+[[ -n "$keyboard_module" ]]      && modules+=("  $keyboard_module")
 [[ -n "$date_module" ]]          && modules+=("    $date_module ")
 
 echo "${modules[*]}"
