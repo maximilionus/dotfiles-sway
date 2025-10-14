@@ -1,5 +1,7 @@
 ### Variables
 #
+set $config_dir ~/.config/sway
+set $scripts_dir $config_dir/scripts
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -9,18 +11,16 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-# Advanced workspace controller script
-set $workspace_ctl ~/.local/bin/sway-workspace-ctl.sh
+# Advanced workspace control script
+set $workspace_ctl $scripts_dir/workspace-ctl.sh
 # Screenshoting script
-set $screenshot ~/.local/bin/sway-screenshot.sh
+set $screenshot $scripts_dir/screenshot.sh
 # Preferred lockscreen
-set $locker ~/.local/bin/sway-lock.sh
+set $locker $scripts_dir/lock.sh
 # Swaybar status generation
-set $swaybar_script ~/.local/bin/swaybar-status-command.sh
+set $swaybar_script $scripts_dir/status-command.sh
 # Application launcher
-set $wmenu_args -f "Sans-serif 14" -i \
-    -N 080808 -n ffffff -S ffffff -s 000000 -M c8c8c8 -m 000000
-set $menu wmenu-run $wmenu_args -p "Execute"
+set $menu wmenu-run -p "Execute"
 
 ### Global font settings
 font pango:Inter Bold 9
@@ -49,7 +49,7 @@ output * bg ~/Pictures/wallpaper fill
 #
 exec swayidle -w \
          timeout 300 'bash $locker' \
-         before-sleep 'bash $locker suspend'
+         before-sleep 'bash $locker'
 
 ### Input configuration
 #
@@ -100,8 +100,10 @@ exec swayidle -w \
 
     # Exit Sway
     bindsym --to-code $mod+Shift+Escape exec printf "No\nYes" \
-        | wmenu $wmenu_args -p "Exit SwayWM?" \
+        | wmenu -p "Exit SwayWM?" \
         | grep -q Yes && swaymsg exit
+
+    bindsym --to-code $mod+Delete exec $scripts_dir/power.sh
 #
 # Moving around:
 #

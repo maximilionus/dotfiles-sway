@@ -1,0 +1,19 @@
+#!/bin/bash
+
+OPTIONS="Poweroff
+Suspend
+Reboot"
+
+selected_option=$(echo "$OPTIONS" | wmenu -p "Select an option")
+
+case "$selected_option" in
+    Poweroff)
+        systemctl poweroff
+        ;;
+    Suspend)
+        systemctl suspend
+        ;;
+    Reboot)
+        systemctl reboot
+        ;;
+esac
