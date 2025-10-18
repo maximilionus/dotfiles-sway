@@ -8,6 +8,8 @@ BATTERY_CHARGE_ICON="󱐋"
 BACKLIGHT_ICON=""
 NET_LAN_ICON=""
 NET_WIFI_ICON=""
+NET_BRIDGE_ICON="󰘘"
+NET_TUN_ICON="󱠽"
 NET_DOWN_ICON=""
 BLUETOOTH_ICON=""
 BLUETOOTH_CONNECTED_ICON="<sup></sup>"
@@ -86,13 +88,20 @@ network_module="$NET_DOWN_ICON"
 
 network_module_fnc() {
     default_iface=$(ip route 2>/dev/null | awk '/^default/ {print $5; exit}')
-    if [ -n "$default_iface" ]; then
-        if [[ $(cat /sys/class/net/"$default_iface"/type) -eq 1 ]]; then
+
+    if [[ -n "$default_iface" ]]; then
+        if [[ -d "/sys/class/net/$default_iface/device" ]]; then
             if [[ $default_iface == wl* ]]; then
                 network_module="$NET_WIFI_ICON"
             else
                 network_module="$NET_LAN_ICON"
             fi
+        elif [[ -d "/sys/class/net/$default_iface/bridge" ]]; then
+            network_module="$NET_BRIDGE_ICON"
+        elif [[ -e "/sys/class/net/$default_iface/tun_flags" ]]; then
+            network_module="$NET_TUN_ICON"
+        else
+            network_module="Network (Unknown type)"
         fi
     fi
 }
