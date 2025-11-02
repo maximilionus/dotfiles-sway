@@ -33,9 +33,8 @@ NOTES
 EXTENDED CONTROLS
     Mod key (mod)                            - Meta (Win)
     Execute                                  - mod + Tab
-    Exit window manager                      - mod + Shift + Escape
-    Screen lock                              - mod + Escape
     Power menu                               - mod + Delete
+    Screen lock                              - mod + Escape
     Split mode                               - mod + e
     Tabbed mode                              - mod (+ Shift) + w
         * Hold Shift for Stacking (Vertical tabs) mode

@@ -23,7 +23,7 @@ set $swaybar_script $scripts_dir/status-command.sh
 set $menu wmenu-run -p "Execute"
 
 ### Global font settings
-font pango:Inter Bold 9
+font pango:Inter 9
 output * subpixel none
 
 ### Autostart
@@ -97,11 +97,6 @@ exec swayidle -w \
 
     # Reload the configuration file
     bindsym --to-code $mod+Shift+c reload
-
-    # Exit Sway
-    bindsym --to-code $mod+Shift+Escape exec printf "No\nYes" \
-        | wmenu -p "Exit SwayWM?" \
-        | grep -q Yes && swaymsg exit
 
     bindsym --to-code $mod+Delete exec $scripts_dir/power.sh
 #

@@ -2,7 +2,8 @@
 
 OPTIONS="Poweroff
 Suspend
-Reboot"
+Reboot
+Logout"
 
 selected_option=$(echo "$OPTIONS" | wmenu -p "Select an option")
 
@@ -15,5 +16,8 @@ case "$selected_option" in
         ;;
     Reboot)
         systemctl reboot
+        ;;
+    Logout)
+        swaymsg exit
         ;;
 esac
