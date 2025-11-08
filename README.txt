@@ -33,17 +33,19 @@ NOTES
 EXTENDED CONTROLS
     Mod key (mod)                            - Meta (Win)
     Execute                                  - mod + Tab
+    Open terminal                            - mod (+ Shift) + Enter
+      ^ Hold Shift to open in the same directory as focused window.
     Power menu                               - mod + Delete
     Screen lock                              - mod + Escape
     Split mode                               - mod + e
     Tabbed mode                              - mod (+ Shift) + w
-        * Hold Shift for Stacking (Vertical tabs) mode
+      ^ Hold Shift for Stacking (Vertical tabs) mode
     Floating mode switch                     - mod + f
     Floating focus switch                    - Alt + Tab
     Kill focused window                      - mod (+ Shift) + q
-        * Hold Shift to send SIGKILL (-9)
+      ^ Hold Shift to send SIGKILL (-9)
     Resize focused window left/down/up/right - mod (+ Shift) + y/u/i/o
-        * Hold Shift for precise resize
+      ^ Hold Shift for precise resize
     Full-screen mode switch                  - mod + m
     Always-on-top mode                       - mod + s
     Set workspace layer (offset)             - mod + Alt + <0..9>

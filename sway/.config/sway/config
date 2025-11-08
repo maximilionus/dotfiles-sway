@@ -1,7 +1,5 @@
 ### Variables
 #
-set $config_dir ~/.config/sway
-set $scripts_dir $config_dir/scripts
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -9,18 +7,19 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term foot
-# Advanced workspace control script
-set $workspace_ctl $scripts_dir/workspace-ctl.sh
-# Screenshoting script
-set $screenshot $scripts_dir/screenshot.sh
-# Preferred lockscreen
-set $locker $scripts_dir/lock.sh
-# Swaybar status generation
-set $swaybar_script $scripts_dir/status-command.sh
-# Application launcher
 set $menu wmenu-run -p "Execute"
+
+set $config_dir ~/.config/sway
+set $scripts_dir $config_dir/scripts
+
+set $run_cwd $scripts_dir/run-cwd.sh
+set $power_control $scripts_dir/power-control.sh
+set $workspace_ctl $scripts_dir/workspace-ctl.sh
+set $screen_lock $scripts_dir/screen-lock.sh
+set $screenshot $scripts_dir/screenshot.sh
+set $swaybar_script $scripts_dir/status-command.sh
 
 ### Global font settings
 font pango:Inter 9
@@ -48,8 +47,8 @@ output * bg ~/Pictures/wallpaper fill
 ### Idle configuration
 #
 exec swayidle -w \
-         timeout 300 'bash $locker' \
-         before-sleep 'bash $locker'
+         timeout 300 'bash $screen_lock' \
+         before-sleep 'bash $screen_lock'
 
 ### Input configuration
 #
@@ -78,8 +77,11 @@ exec swayidle -w \
     # Start a terminal
     bindsym $mod+Return exec $term
 
-    # Start a terminal
-    bindsym $mod+Escape exec $locker
+    # Start a terminal in current dir of the focused window
+    bindsym $mod+Shift+Return exec $run_cwd $term
+
+    # Lock the screen
+    bindsym $mod+Escape exec $screen_lock
 
     # Kill focused window
     bindsym --to-code $mod+q kill
@@ -98,7 +100,7 @@ exec swayidle -w \
     # Reload the configuration file
     bindsym --to-code $mod+Shift+c reload
 
-    bindsym --to-code $mod+Delete exec $scripts_dir/power.sh
+    bindsym --to-code $mod+Delete exec $power_control
 #
 # Moving around:
 #
