@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term foot
 # Advanced workspace control script
 set $workspace_ctl $scripts_dir/workspace-ctl.sh
 # Screenshoting script
