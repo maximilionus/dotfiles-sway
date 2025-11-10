@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SPLITTER="<span foreground=\"gray\">|</span>"
+SPLITTER=
+# SPLITTER="<span foreground=\"gray\">|</span>"
 
 KB_PREFIX="<span weight=\"bold\">LANG</span> "
 VOLUME_ACTIVE_PREFIX="<span weight=\"bold\">VOL</span> "
