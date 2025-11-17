@@ -158,6 +158,7 @@ exec swayidle -w \
     bindsym $mod+Ctrl+8 exec $workspace_ctl set-layer 8
     bindsym $mod+Ctrl+9 exec $workspace_ctl set-layer 9
     bindsym $mod+Ctrl+0 exec $workspace_ctl set-layer 0
+    bindsym $mod+Ctrl+Grave exec $workspace_ctl set-layer 0
     # Switch to workspace
     bindsym $mod+1 exec $workspace_ctl set 1
     bindsym $mod+2 exec $workspace_ctl set 2

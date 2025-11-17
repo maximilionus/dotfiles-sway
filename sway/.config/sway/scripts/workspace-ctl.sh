@@ -20,8 +20,8 @@ case "$COMMAND" in
         ;;
     set-layer)
         notify="Workspace layer"
-        [[ ! -d $SWAY_STATE ]] && mkdir -p "$SWAY_STATE"
-        if [[ $COMMAND_2 == 0 ]]; then
+        [[ ! -d "$SWAY_STATE" ]] && mkdir -p "$SWAY_STATE"
+        if [[ "$COMMAND_2" == 0 ]]; then
             COMMAND_2=""
             notify="$notify unset"
         else
