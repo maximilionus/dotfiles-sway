@@ -15,7 +15,7 @@ wl-clipboard
 brightnessctl
 playerctl
 pavucontrol
-udiskie
+udisks2
 xdg-desktop-portal
 xdg-desktop-portal-wlr
 xdg-desktop-portal-gtk

@@ -29,7 +29,6 @@ output * subpixel none
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec dunst
-exec udiskie
 exec playerctld daemon
 
 ### Output configuration
