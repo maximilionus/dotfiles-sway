@@ -39,7 +39,7 @@ EXTENDED CONTROLS
     Screen lock                              - mod + Escape
     Split mode                               - mod + e
     Tabbed mode                              - mod (+ Shift) + w
-      ^ Hold Shift for Stacking (Vertical tabs) mode
+      ^ Hold Shift for Stacking mode
     Floating mode switch                     - mod + f
     Floating focus switch                    - Alt + Tab
     Kill focused window                      - mod (+ Shift) + q
@@ -48,7 +48,8 @@ EXTENDED CONTROLS
       ^ Hold Shift for precise resize
     Full-screen mode switch                  - mod + m
     Always-on-top mode                       - mod + s
-    Set workspace layer (offset)             - mod + Alt + <0..9>
+    Set workspace layer                      - mod + <F1..F9>
+    Reset workspace layer                    - mod + `
     Tile horizontal split                    - mod + g
     Tile vertical split                      - mod + v
     Cancel tile split                        - mod + c

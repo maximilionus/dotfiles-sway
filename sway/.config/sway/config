@@ -147,17 +147,16 @@ exec swayidle -w \
 # Workspaces:
 #
     # Set workspace layer
-    bindsym $mod+Ctrl+1 exec $workspace_ctl set-layer 1
-    bindsym $mod+Ctrl+2 exec $workspace_ctl set-layer 2
-    bindsym $mod+Ctrl+3 exec $workspace_ctl set-layer 3
-    bindsym $mod+Ctrl+4 exec $workspace_ctl set-layer 4
-    bindsym $mod+Ctrl+5 exec $workspace_ctl set-layer 5
-    bindsym $mod+Ctrl+6 exec $workspace_ctl set-layer 6
-    bindsym $mod+Ctrl+7 exec $workspace_ctl set-layer 7
-    bindsym $mod+Ctrl+8 exec $workspace_ctl set-layer 8
-    bindsym $mod+Ctrl+9 exec $workspace_ctl set-layer 9
-    bindsym $mod+Ctrl+0 exec $workspace_ctl set-layer 0
-    bindsym $mod+Ctrl+Grave exec $workspace_ctl set-layer 0
+    bindsym $mod+F1 exec $workspace_ctl set-layer 1
+    bindsym $mod+F2 exec $workspace_ctl set-layer 2
+    bindsym $mod+F3 exec $workspace_ctl set-layer 3
+    bindsym $mod+F4 exec $workspace_ctl set-layer 4
+    bindsym $mod+F5 exec $workspace_ctl set-layer 5
+    bindsym $mod+F6 exec $workspace_ctl set-layer 6
+    bindsym $mod+F7 exec $workspace_ctl set-layer 7
+    bindsym $mod+F8 exec $workspace_ctl set-layer 8
+    bindsym $mod+F9 exec $workspace_ctl set-layer 9
+    bindsym $mod+Grave exec $workspace_ctl set-layer 0
     # Switch to workspace
     bindsym $mod+1 exec $workspace_ctl set 1
     bindsym $mod+2 exec $workspace_ctl set 2
