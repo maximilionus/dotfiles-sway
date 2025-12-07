@@ -251,6 +251,29 @@ exec swayidle -w \
     bindsym $mod+Prior output * dpms on
     bindsym $mod+Next output * dpms off
 
+
+# Enforce window borders for every window
+default_border pixel 2
+
+# Hide borders for one-window workspaces
+hide_edge_borders smart
+
+# Disable any idle timers for fullscreen apps on both Wayland and XWayland
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+# Hide cursor on idle
+seat * hide_cursor 8000
+
+# Colors
+set $background_1 #000000
+set $background_2 #080808
+set $background_3 #484848
+set $foreground_1 #FFFFFF
+set $foreground_2 #CFCFCF
+set $foreground_3 #9F9F9F
+set $accent       #4A8BE3
+
 #
 # Status Bar:
 #
@@ -263,42 +286,21 @@ bar {
     status_command while true; do $swaybar_script; sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #000000
-        inactive_workspace #000000 #000000 #f0f0f0
-        active_workspace #646464 #646464 #000000
-        focused_workspace #ffffff #ffffff #000000
-        urgent_workspace #4a8be3 #4a8be3 #ffffff
+        statusline         $foreground_1
+        background         $background_1
+        inactive_workspace $background_1 $background_1 $foreground_2
+        active_workspace   $foreground_2 $foreground_2 $background_1
+        focused_workspace  $foreground_1 $foreground_1 $background_1
+        urgent_workspace   $accent $accent $foreground_1
     }
 }
 
-
-# Enforce window borders for every window
-default_border pixel 2
-
-# Hide borders for one-window workspaces
-hide_edge_borders smart
-
-# Disable any idle timers for fullscreen apps on both Wayland and XWayland
-for_window [class=".*"] inhibit_idle fullscreen
-for_window [app_id=".*"] inhibit_idle fullscreen
-
-# Hide cursor when idel
-seat * hide_cursor 8000
-
-# Colors
-set $dark        #080808
-set $dark_2      #484848
-set $dark_3      #9F9F9F
-set $light       #CFCFCF
-set $blue        #4A8BE3
-
-# class                 border  bground  text  indicator  child_border
-client.focused          $dark_3 $dark_3 $dark $blue $dark_3
-client.focused_inactive $dark_2 $dark_2 $light $dark_2 $dark
-client.unfocused        $dark $dark $light $blue $dark
-client.urgent           $dark_2 $dark_2 $light $blue $dark_2
-client.placeholder      $light $dark  $dark $blue $light
+# class                 border        bground       text          indicator     child_border
+client.focused          $foreground_3 $foreground_3 $background_1 $foreground_1 $foreground_3
+client.focused_inactive $background_2 $background_2 $foreground_2 $background_2 $background_2
+client.unfocused        $background_1 $background_1 $foreground_2 $accent       $background_2
+client.urgent           $background_2 $background_2 $foreground_2 $accent       $background_2
+client.placeholder      $foreground_2 $background_1 $background_1 $background_2 $foreground_2
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
