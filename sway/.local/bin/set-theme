@@ -1,9 +1,9 @@
 #!/bin/bash
 
 set_gsettings_theme () {
-    mode="$1"
-    color_scheme="default"
-    gtk_theme="Adwaita"
+    local mode="$1"
+    local color_scheme="default"
+    local gtk_theme="Adwaita"
 
     if [[ $mode == "dark" ]]; then
         color_scheme="prefer-dark"
@@ -14,12 +14,27 @@ set_gsettings_theme () {
     gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
 }
 
+set_sway_theme () {
+    local mode="$1"
+    local theme_file="theme-light.conf"
 
-case $1 in
+    if [[ "$mode" == "dark" ]]; then
+        theme_file="theme-dark.conf"
+    fi
+
+    cd "$HOME/.config/sway/theme"
+    ln -sf ./"$theme_file" theme.conf
+    cd "$OLDPWD"
+    swaymsg reload
+}
+
+case "$1" in
     l*|0)
+        set_sway_theme light
         set_gsettings_theme light
         ;;
     d*|1)
+        set_sway_theme dark
         set_gsettings_theme dark
         ;;
 esac
