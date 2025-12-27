@@ -2,7 +2,7 @@
 
 COMMAND="$1"
 COMMAND_2="$2"
-SWAY_STATE="$HOME/.local/state/sway"
+SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
 LAYER_FILE="$SWAY_STATE/workspace_layer"
 
 get_layer () {
