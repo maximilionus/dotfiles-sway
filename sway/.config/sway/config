@@ -13,6 +13,7 @@ set $menu wmenu-run -p "Execute"
 
 set $config_dir ~/.config/sway
 set $scripts_dir $config_dir/scripts
+set $runtime_dir $XDG_RUNTIME_DIR/sway
 
 set $run_cwd $scripts_dir/run-cwd.sh
 set $power_control $scripts_dir/power-control.sh
@@ -27,6 +28,7 @@ font pango:Inter 9
 output * subpixel none
 
 ### Autostart
+exec mkdir -p $runtime_dir
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec dunst
@@ -46,6 +48,7 @@ output * bg ~/Pictures/wallpaper fill
 
 ### Idle configuration
 #
+exec swayidle -w before-sleep "sh $screen_lock 1"
 exec $idle $screen_lock
 
 ### Input configuration

@@ -143,13 +143,18 @@ notifications_module_fnc() {
 }
 notifications_module_fnc
 
-# Wakelock (always on)
-wakelock_module=""
+# Wakelock (always on mode)
+wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
 wakelock_module_fnc() {
     local sway_state="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
-    local lock_file="$sway_state/wake.lock"
+    local pid_file="$sway_state/swayidle.pid"
 
-    [[ -f "$lock_file" ]] && wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
+    [[ ! -f "$pid_file" ]] && return 0
+
+    local pid="$(cat $pid_file)"
+    if ps -p $pid > /dev/null; then
+        wakelock_module=""
+    fi
 }
 wakelock_module_fnc
 
