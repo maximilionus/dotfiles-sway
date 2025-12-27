@@ -1,33 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SPLITTER=
 # SPLITTER="<span foreground=\"gray\">|</span>"
 
 KB_PREFIX="<span weight=\"bold\">LANG</span> "
-VOLUME_ACTIVE_PREFIX="<span weight=\"bold\">VOL</span> "
-VOLUME_MUTED_PREFIX="${VOLUME_ACTIVE_PREFIX}Muted"
-BATTERY_FULL_PREFIX="<span weight=\"bold\">BAT</span> "
-BATTERY_DISCHARGE_PREFIX="$BATTERY_FULL_PREFIX"
-BATTERY_CHARGE_PREFIX="${BATTERY_FULL_PREFIX}+"
+VOLUME_PREFIX="<span weight=\"bold\">VOL</span> "
+BATTERY_PREFIX="<span weight=\"bold\">BAT</span> "
 BACKLIGHT_PREFIX="<span weight=\"bold\">B</span> "
 NET_PREFIX="<span weight=\"bold\">NET</span>"
-NET_LAN_PREFIX="$NET_PREFIX Eth"
-NET_WIFI_PREFIX="$NET_PREFIX WiFi"
-NET_BRIDGE_PREFIX="$NET_PREFIX Bridge"
-NET_TUN_PREFIX="$NET_PREFIX Tunnel"
-NET_DOWN_PREFIX="$NET_PREFIX Offline"
+NET_LAN="Eth"
+NET_WIFI="WiFi"
+NET_BRIDGE="Bridge"
+NET_TUN="Tunnel"
+NET_DOWN="Offline"
 BLUETOOTH_PREFIX="<span weight=\"bold\">BT</span>"
-BLUETOOTH_CONNECTED_PREFIX=" Con"
-NOTIFICATIONS_ACTIVE_PREFIX=""
-NOTIFICATIONS_MUTED_PREFIX="<span weight=\"bold\">NOTIF</span> Silent"
-WAKELOCK_ACTIVE="<span weight=\"bold\">WAKE</span>"
+BLUETOOTH_CONNECTED="Con"
+NOTIFICATIONS_PREFIX="<span weight=\"bold\">NOTIF</span>"
+NOTIFICATIONS_MUTED="Silent"
+WAKELOCK_PREFIX="<span weight=\"bold\">WAKE</span>"
+WAKELOCK_ACTIVE="Lock"
 
 # Date
 date_module=$(date +'%e  %a  %H:%M')
 
 # Keyboard
 keyboard_module="$KB_PREFIX"
-
 keyboard_module_fnc() {
     keyboard_module="${keyboard_module}$(swaymsg -t get_inputs \
         | jq -r '.[] | select(.type=="keyboard") | .xkb_active_layout_name' \
@@ -39,43 +36,36 @@ keyboard_module_fnc
 
 # Audio
 audio_module=""
-
 audio_module_fnc() {
     audio_pipewire=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
     audio_module=$(echo "$audio_pipewire" | awk '{print $2*100}')
     audio_module=$(echo "$audio_pipewire" | grep -q MUTED \
-        && echo "$VOLUME_MUTED_PREFIX" || echo "$VOLUME_ACTIVE_PREFIX$audio_module%")
+        && echo "$VOLUME_PREFIX Muted" || echo "$VOLUME_PREFIX $audio_module%")
 }
 audio_module_fnc
 
 # Battery
 battery_module=""
-
 battery_module_fnc() {
-    battery_status=$(ls /sys/class/power_supply/ | grep BAT | head -n1)
+    local battery_status=$(ls /sys/class/power_supply/ | grep BAT | head -n1)
 
     if [[ -z $battery_status ]]; then
         return 0
     fi
 
-    capacity=$(cat /sys/class/power_supply/$battery_status/capacity)
-    status=$(cat /sys/class/power_supply/$battery_status/status)
+    local capacity=$(cat /sys/class/power_supply/$battery_status/capacity)
+    local status=$(cat /sys/class/power_supply/$battery_status/status)
 
     if [[ $status = "Charging" ]]; then
-        icon="$BATTERY_CHARGE_PREFIX"
-    elif [[ $status = "Discharging" ]]; then
-        icon="$BATTERY_DISCHARGE_PREFIX"
-    else
-        icon="$BATTERY_FULL_PREFIX"
+        icon="+"
     fi
 
-    battery_module="$icon $capacity%"
+    battery_module="$BATTERY_PREFIX$icon $capacity%"
 }
 battery_module_fnc
 
 # Screen backlight
 backlight_module=""
-
 backlight_module_fnc() {
     backlight_dir="/sys/class/backlight"
     device=$(ls "$backlight_dir" 2>/dev/null | head -n1)
@@ -90,24 +80,23 @@ backlight_module_fnc() {
 backlight_module_fnc
 
 # Network
-network_module="$NET_DOWN_PREFIX"
-
+network_module="$NET_PREFIX $NET_DOWN"
 network_module_fnc() {
     default_iface=$(ip route 2>/dev/null | awk '/^default/ {print $5; exit}')
 
     if [[ -n "$default_iface" ]]; then
         if [[ -d "/sys/class/net/$default_iface/device" ]]; then
             if [[ $default_iface == wl* ]]; then
-                network_module="$NET_WIFI_PREFIX"
+                network_module="$NET_PREFIX $NET_WIFI"
             else
-                network_module="$NET_LAN_PREFIX"
+                network_module="$NET_PREFIX $NET_LAN"
             fi
         elif [[ -d "/sys/class/net/$default_iface/bridge" ]]; then
-            network_module="$NET_BRIDGE_PREFIX"
+            network_module="$NET_PREFIX $NET_BRIDGE"
         elif [[ -e "/sys/class/net/$default_iface/tun_flags" ]]; then
-            network_module="$NET_TUN_PREFIX"
+            network_module="$NET_PREFIX $NET_TUN"
         else
-            network_module="Network (Unknown type)"
+            network_module="$NET_PREFIX Unknown"
         fi
     fi
 }
@@ -115,28 +104,25 @@ network_module_fnc
 
 # Bluetooth
 bluetooth_module=""
-
 bluetooth_module_fnc() {
     if ! systemctl is-active --quiet bluetooth.service; then
         return 0
     fi
 
     bluetooth_power=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
-    if [ "$bluetooth_power" = "yes" ]; then
-        connected=$(bluetoothctl info | grep "Connected: yes")
+    [[ "$bluetooth_power" = "no" ]] && return 0
 
-        if [ -n "$connected" ]; then
-            bluetooth_module="${BLUETOOTH_PREFIX}${BLUETOOTH_CONNECTED_PREFIX}"
-        else
-            bluetooth_module="$BLUETOOTH_PREFIX"
-        fi
+    local connected=$(bluetoothctl info | grep "Connected: yes")
+    if [ -n "$connected" ]; then
+        bluetooth_module="${BLUETOOTH_PREFIX} ${BLUETOOTH_CONNECTED}"
+    else
+        bluetooth_module="$BLUETOOTH_PREFIX"
     fi
 }
 bluetooth_module_fnc
 
 # Notifications
 notifications_module=""
-
 notifications_module_fnc() {
     if ! pidof dunst > /dev/null; then
         return 0;
@@ -146,12 +132,12 @@ notifications_module_fnc() {
     count=$(dunstctl count waiting)
 
     if [ "$paused" == "false" ]; then
-        notifications_module="$NOTIFICATIONS_ACTIVE_PREFIX"
+        : #notifications_module="$NOTIFICATIONS_PREFIX"
     else
         if [ "$count" != "0" ]; then
-            notifications_module="$NOTIFICATIONS_MUTED_PREFIX <sup>$count</sup>"
+            notifications_module="$NOTIFICATIONS_PREFIX $NOTIFICATIONS_MUTED ($count)"
         else
-            notifications_module="$NOTIFICATIONS_MUTED_PREFIX"
+            notifications_module="$NOTIFICATIONS_PREFIX $NOTIFICATIONS_MUTED"
         fi
     fi
 }
@@ -159,12 +145,11 @@ notifications_module_fnc
 
 # Wakelock (always on)
 wakelock_module=""
-
 wakelock_module_fnc() {
     local sway_state="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
     local lock_file="$sway_state/wake.lock"
 
-    [[ -f "$lock_file" ]] && wakelock_module="$WAKELOCK_ACTIVE"
+    [[ -f "$lock_file" ]] && wakelock_module="$WAKELOCK_PREFIX $WAKELOCK_ACTIVE"
 }
 wakelock_module_fnc
 
