@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 WMENU_ARGS=(-f "Sans-serif 14" -i -N 080808 -n ffffff -S ffffff -s 000000 -M c8c8c8 -m 000000)
 BIN_NAME=$(basename $0)
