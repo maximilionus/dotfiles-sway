@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
+LOCK_FILE="$SWAY_STATE/wake.lock"
+PID_FILE="$SWAY_STATE/swayidle.pid"
+
+[[ ! -f "$PID_FILE" ]] && exit 1
+
+process_pid="$(cat $PID_FILE)"
+if cat "/proc/$process_pid/status" | grep -q 'T (stopped)'; then
+    kill -SIGCONT "$process_pid"
+    rm "$LOCK_FILE"
+else
+    kill -SIGSTOP "$process_pid"
+    touch "$LOCK_FILE"
+fi

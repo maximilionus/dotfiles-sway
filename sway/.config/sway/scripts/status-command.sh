@@ -20,6 +20,7 @@ BLUETOOTH_PREFIX="<span weight=\"bold\">BT</span>"
 BLUETOOTH_CONNECTED_PREFIX=" Con"
 NOTIFICATIONS_ACTIVE_PREFIX=""
 NOTIFICATIONS_MUTED_PREFIX="<span weight=\"bold\">NOTIF</span> Silent"
+WAKELOCK_ACTIVE="<span weight=\"bold\">WAKE</span>"
 
 # Date
 date_module=$(date +'%e  %a  %H:%M')
@@ -156,6 +157,17 @@ notifications_module_fnc() {
 }
 notifications_module_fnc
 
+# Wakelock (always on)
+wakelock_module=""
+
+wakelock_module_fnc() {
+    local sway_state="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
+    local lock_file="$sway_state/wake.lock"
+
+    [[ -f "$lock_file" ]] && wakelock_module="$WAKELOCK_ACTIVE"
+}
+wakelock_module_fnc
+
 # Formatted final output with proper margin
 # Margin... using spaces. Sorry not sorry :)
 modules=()
@@ -165,6 +177,7 @@ modules=()
 [[ -n "$bluetooth_module" ]]     && modules+=("  $SPLITTER  $bluetooth_module")
 [[ -n "$network_module" ]]       && modules+=("  $SPLITTER  $network_module")
 [[ -n "$audio_module" ]]         && modules+=("  $SPLITTER  $audio_module")
+[[ -n "$wakelock_module" ]]      && modules+=("  $SPLITTER  $wakelock_module")
 [[ -n "$notifications_module" ]] && modules+=("  $SPLITTER  $notifications_module")
 [[ -n "$keyboard_module" ]]      && modules+=("  $SPLITTER  $keyboard_module")
 [[ -n "$date_module" ]]          && modules+=("  $SPLITTER  $date_module")
