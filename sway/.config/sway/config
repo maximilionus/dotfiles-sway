@@ -1,8 +1,6 @@
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+# Variables
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left h
 set $down j
 set $up k
@@ -23,38 +21,25 @@ set $screen_lock $scripts_dir/screen-lock.sh
 set $screenshot $scripts_dir/screenshot.sh
 set $swaybar_script $scripts_dir/status-command.sh
 
-### Global font settings
+# Global font settings
 font pango:Inter 9
 output * subpixel none
 
-### Autostart
+# Autostart
 exec mkdir -p $runtime_dir
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec dunst
 exec playerctld daemon
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Output configuration
 output * bg ~/Pictures/wallpaper fill
 
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
+# Idle configuration
 exec swayidle -w before-sleep "sh $screen_lock 1"
 exec $idle $screen_lock
 
-### Input configuration
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+# Input configuration
 input * {
     xkb_layout "us,ru"
     xkb_options "grp:win_space_toggle"
@@ -72,209 +57,158 @@ input type:touchpad {
 }
 
 
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
+# Key bindings
+## Basics:
 
-    # Start a terminal in current dir of the focused window
-    bindsym $mod+Shift+Return exec $run_cwd $term
+### Start a terminal
+bindsym $mod+Return exec $term
 
-    # Lock the screen
-    bindsym $mod+Escape exec $screen_lock
+bindsym $mod+Shift+Return exec $run_cwd $term
 
-    # Kill focused window
-    bindsym --to-code $mod+q kill
-    bindsym --to-code $mod+Shift+q exec sh -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
+bindsym $mod+Escape exec $screen_lock
 
-    # Start your launcher
-    bindsym $mod+Tab exec $menu
+bindsym --to-code $mod+q kill
+bindsym --to-code $mod+Shift+q exec sh -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+bindsym $mod+Tab exec $menu
 
-    # Reload the configuration file
-    bindsym --to-code $mod+Shift+c reload
+floating_modifier $mod normal
 
-    bindsym --to-code $mod+Delete exec $power_control
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym --to-code $mod+$left focus left
-    bindsym --to-code $mod+$down focus down
-    bindsym --to-code $mod+$up focus up
-    bindsym --to-code $mod+$right focus right
+bindsym --to-code $mod+Shift+c reload
 
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+bindsym --to-code $mod+Delete exec $power_control
 
-    # Move the focused window
-    bindsym --to-code $mod+Shift+$left move left
-    bindsym --to-code $mod+Shift+$down move down
-    bindsym --to-code $mod+Shift+$up move up
-    bindsym --to-code $mod+Shift+$right move right
+## Moving around:
+bindsym --to-code $mod+$left focus left
+bindsym --to-code $mod+$down focus down
+bindsym --to-code $mod+$up focus up
+bindsym --to-code $mod+$right focus right
 
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # Relative resize focused window
-    bindsym --to-code $mod+y exec \
-        "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
-    bindsym --to-code $mod+u exec \
-        "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
-    bindsym --to-code $mod+i exec \
-        "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
-    bindsym --to-code $mod+o exec \
-        "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
+bindsym --to-code $mod+Shift+$left move left
+bindsym --to-code $mod+Shift+$down move down
+bindsym --to-code $mod+Shift+$up move up
+bindsym --to-code $mod+Shift+$right move right
 
-    bindsym --to-code $mod+Shift+y exec \
-        "swaymsg resize grow left 2 px or 2 ppt || swaymsg resize shrink right 2 px or 2 ppt"
-    bindsym --to-code $mod+Shift+u exec \
-        "swaymsg resize grow down 2 px or 2 ppt || swaymsg resize shrink up 2 px or 2 ppt"
-    bindsym --to-code $mod+Shift+i exec \
-        "swaymsg resize grow up 2 px or 2 ppt || swaymsg resize shrink down 2 px or 2 ppt"
-    bindsym --to-code $mod+Shift+o exec \
-        "swaymsg resize grow right 2 px or 2 ppt || swaymsg resize shrink left 2 px or 2 ppt"
-#
-# Workspaces:
-#
-    # Set workspace layer
-    bindsym $mod+F1 exec $workspace_ctl set-layer 1
-    bindsym $mod+F2 exec $workspace_ctl set-layer 2
-    bindsym $mod+F3 exec $workspace_ctl set-layer 3
-    bindsym $mod+F4 exec $workspace_ctl set-layer 4
-    bindsym $mod+F5 exec $workspace_ctl set-layer 5
-    bindsym $mod+F6 exec $workspace_ctl set-layer 6
-    bindsym $mod+F7 exec $workspace_ctl set-layer 7
-    bindsym $mod+F8 exec $workspace_ctl set-layer 8
-    bindsym $mod+F9 exec $workspace_ctl set-layer 9
-    bindsym $mod+Grave exec $workspace_ctl set-layer 0
-    # Switch to workspace
-    bindsym $mod+1 exec $workspace_ctl set 1
-    bindsym $mod+2 exec $workspace_ctl set 2
-    bindsym $mod+3 exec $workspace_ctl set 3
-    bindsym $mod+4 exec $workspace_ctl set 4
-    bindsym $mod+5 exec $workspace_ctl set 5
-    bindsym $mod+6 exec $workspace_ctl set 6
-    bindsym $mod+7 exec $workspace_ctl set 7
-    bindsym $mod+8 exec $workspace_ctl set 8
-    bindsym $mod+9 exec $workspace_ctl set 9
-    bindsym $mod+0 exec $workspace_ctl set 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 exec $workspace_ctl move 1
-    bindsym $mod+Shift+2 exec $workspace_ctl move 2
-    bindsym $mod+Shift+3 exec $workspace_ctl move 3
-    bindsym $mod+Shift+4 exec $workspace_ctl move 4
-    bindsym $mod+Shift+5 exec $workspace_ctl move 5
-    bindsym $mod+Shift+6 exec $workspace_ctl move 6
-    bindsym $mod+Shift+7 exec $workspace_ctl move 7
-    bindsym $mod+Shift+8 exec $workspace_ctl move 8
-    bindsym $mod+Shift+9 exec $workspace_ctl move 9
-    bindsym $mod+Shift+0 exec $workspace_ctl move 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # Use touchpad swipes to switch workspaces
-    bindgesture swipe:right workspace prev
-    bindgesture swipe:left workspace next
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym --to-code $mod+g splith
-    bindsym --to-code $mod+v splitv
-    bindsym --to-code $mod+c split none
+bindsym --to-code $mod+y exec \
+    "swaymsg resize grow left 10 px or 10 ppt || swaymsg resize shrink right 10 px or 10 ppt"
+bindsym --to-code $mod+u exec \
+    "swaymsg resize grow down 10 px or 10 ppt || swaymsg resize shrink up 10 px or 10 ppt"
+bindsym --to-code $mod+i exec \
+    "swaymsg resize grow up 10 px or 10 ppt || swaymsg resize shrink down 10 px or 10 ppt"
+bindsym --to-code $mod+o exec \
+    "swaymsg resize grow right 10 px or 10 ppt || swaymsg resize shrink left 10 px or 10 ppt"
 
-    # Switch the current container between different layout styles
-    bindsym --to-code $mod+e layout toggle split
-    bindsym --to-code $mod+w layout tabbed
-    bindsym --to-code $mod+Shift+w layout stacking
+bindsym --to-code $mod+Shift+y exec \
+    "swaymsg resize grow left 2 px or 2 ppt || swaymsg resize shrink right 2 px or 2 ppt"
+bindsym --to-code $mod+Shift+u exec \
+    "swaymsg resize grow down 2 px or 2 ppt || swaymsg resize shrink up 2 px or 2 ppt"
+bindsym --to-code $mod+Shift+i exec \
+    "swaymsg resize grow up 2 px or 2 ppt || swaymsg resize shrink down 2 px or 2 ppt"
+bindsym --to-code $mod+Shift+o exec \
+    "swaymsg resize grow right 2 px or 2 ppt || swaymsg resize shrink left 2 px or 2 ppt"
 
-    # Make the current focus fullscreen
-    bindsym --to-code $mod+m fullscreen
+## Workspaces:
+bindsym $mod+F1 exec $workspace_ctl set-layer 1
+bindsym $mod+F2 exec $workspace_ctl set-layer 2
+bindsym $mod+F3 exec $workspace_ctl set-layer 3
+bindsym $mod+F4 exec $workspace_ctl set-layer 4
+bindsym $mod+F5 exec $workspace_ctl set-layer 5
+bindsym $mod+F6 exec $workspace_ctl set-layer 6
+bindsym $mod+F7 exec $workspace_ctl set-layer 7
+bindsym $mod+F8 exec $workspace_ctl set-layer 8
+bindsym $mod+F9 exec $workspace_ctl set-layer 9
+bindsym $mod+Grave exec $workspace_ctl set-layer 0
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym --to-code $mod+f floating toggle
+bindsym $mod+1 exec $workspace_ctl set 1
+bindsym $mod+2 exec $workspace_ctl set 2
+bindsym $mod+3 exec $workspace_ctl set 3
+bindsym $mod+4 exec $workspace_ctl set 4
+bindsym $mod+5 exec $workspace_ctl set 5
+bindsym $mod+6 exec $workspace_ctl set 6
+bindsym $mod+7 exec $workspace_ctl set 7
+bindsym $mod+8 exec $workspace_ctl set 8
+bindsym $mod+9 exec $workspace_ctl set 9
+bindsym $mod+0 exec $workspace_ctl set 10
 
-    # Toggle always-on-top mode
-    bindsym --to-code $mod+s sticky toggle
+bindsym $mod+Shift+1 exec $workspace_ctl move 1
+bindsym $mod+Shift+2 exec $workspace_ctl move 2
+bindsym $mod+Shift+3 exec $workspace_ctl move 3
+bindsym $mod+Shift+4 exec $workspace_ctl move 4
+bindsym $mod+Shift+5 exec $workspace_ctl move 5
+bindsym $mod+Shift+6 exec $workspace_ctl move 6
+bindsym $mod+Shift+7 exec $workspace_ctl move 7
+bindsym $mod+Shift+8 exec $workspace_ctl move 8
+bindsym $mod+Shift+9 exec $workspace_ctl move 9
+bindsym $mod+Shift+0 exec $workspace_ctl move 10
 
-    # Swap focus between the tiling area and the floating area
-    bindsym Alt+Tab focus mode_toggle
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 
-    # Move focus to the parent container
-    bindsym --to-code $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+## Layout:
+bindsym --to-code $mod+g splith
+bindsym --to-code $mod+v splitv
+bindsym --to-code $mod+c split none
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+bindsym --to-code $mod+e layout toggle split
+bindsym --to-code $mod+w layout tabbed
+bindsym --to-code $mod+Shift+w layout stacking
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Utilities:
-#
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special keys to take a screenshots with grim
-    bindsym Shift+Print exec $screenshot
-    bindsym Print exec $screenshot crop-to-clipboard
+bindsym --to-code $mod+m fullscreen
 
+bindsym --to-code $mod+f floating toggle
 
-    # Special keys to control media playback
-    bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym XF86AudioPause exec playerctl play-pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
-    # Control display power
-    bindsym $mod+Prior output * dpms on
-    bindsym $mod+Next output * dpms off
+bindsym --to-code $mod+s sticky toggle
 
+bindsym Alt+Tab focus mode_toggle
 
-# Enforce window borders for every window
+bindsym --to-code $mod+a focus parent
+
+## Scratchpad:
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+## Utilities:
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+bindsym Shift+Print exec $screenshot
+bindsym Print exec $screenshot crop-to-clipboard
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym $mod+Prior output * dpms on
+bindsym $mod+Next output * dpms off
+
+## Style:
 default_border pixel 2
-
-# Hide borders for one-window workspaces
 hide_edge_borders smart
 
-# Disable any idle timers for fullscreen apps on both Wayland and XWayland
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
-# Hide cursor on idle
 seat * hide_cursor 8000
 
-# Load the colors
 include ~/.config/sway/theme/theme.conf
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+# Status Bar
 bar {
     position top
     pango_markup enabled
