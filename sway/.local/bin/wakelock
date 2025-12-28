@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
-# Kill or start the idle timeout process turning the the always on mode off or
-# on.
+# Switch the always on (wakelock) mode on and off.
 set -e
 
 SCRIPT_DIR="$HOME/.config/sway/scripts"
