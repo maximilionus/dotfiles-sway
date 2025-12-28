@@ -3,10 +3,8 @@
 # Switch the always on (wakelock) mode on and off.
 set -e
 
-SCRIPT_DIR="$HOME/.config/sway/scripts"
-SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
-SWAY_SCRIPT_IDLE="$SCRIPT_DIR/idle.sh"
-PID_FILE="$SWAY_STATE/swayidle.pid"
+SWAY_SCRIPT_IDLE="$SWAY_SCRIPTS_DIR/idle.sh"
+PID_FILE="$SWAY_RUNTIME_DIR/swayidle.pid"
 
 [[ ! -f "$PID_FILE" ]] && exit 1
 

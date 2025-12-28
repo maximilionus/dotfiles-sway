@@ -22,7 +22,7 @@ set_sway_theme () {
         theme_file="theme-dark.conf"
     fi
 
-    cd "$HOME/.config/sway/theme"
+    cd "$SWAY_CONFIG_DIR/theme"
     ln -sf ./"$theme_file" theme.conf
     cd "$OLDPWD"
     swaymsg reload
