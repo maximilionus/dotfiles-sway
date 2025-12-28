@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Do not update the status bar when the screen is locked.
+if pgrep -x swaylock > /dev/null; then exit 0; fi
+
 SPLITTER=
 # SPLITTER="<span foreground=\"gray\">|</span>"
 
