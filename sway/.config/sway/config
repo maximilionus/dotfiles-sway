@@ -13,13 +13,13 @@ set $config_dir ~/.config/sway
 set $scripts_dir $config_dir/scripts
 set $runtime_dir $XDG_RUNTIME_DIR/sway
 
-set $run_cwd $scripts_dir/run-cwd.sh
-set $power_control $scripts_dir/power-control.sh
-set $workspace_ctl $scripts_dir/workspace-ctl.sh
+set $exec_cwd $scripts_dir/exec-cwd.sh
+set $power_menu $scripts_dir/power-menu.sh
+set $workspacectl $scripts_dir/workspacectl.sh
 set $idle $scripts_dir/idle.sh
-set $screen_lock $scripts_dir/screen-lock.sh
+set $screenlock $scripts_dir/screenlock.sh
 set $screenshot $scripts_dir/screenshot.sh
-set $swaybar_script $scripts_dir/status-command.sh
+set $statusbar $scripts_dir/statusbar.sh
 
 # Global font settings
 font pango:Inter 9
@@ -36,8 +36,8 @@ exec playerctld daemon
 output * bg ~/Pictures/wallpaper fill
 
 # Idle configuration
-exec swayidle -w before-sleep "sh $screen_lock 1"
-exec $idle $screen_lock
+exec swayidle -w before-sleep "sh $screenlock 1"
+exec $idle $screenlock
 
 # Input configuration
 input * {
@@ -63,9 +63,9 @@ input type:touchpad {
 ### Start a terminal
 bindsym $mod+Return exec $term
 
-bindsym $mod+Shift+Return exec $run_cwd $term
+bindsym $mod+Shift+Return exec $exec_cwd $term
 
-bindsym $mod+Escape exec $screen_lock
+bindsym $mod+Escape exec $screenlock
 
 bindsym --to-code $mod+q kill
 bindsym --to-code $mod+Shift+q exec sh -c 'kill -9 $(swaymsg -t get_tree | jq ".. | objects | select(.focused? == true).pid")'
@@ -76,7 +76,7 @@ floating_modifier $mod normal
 
 bindsym --to-code $mod+Shift+c reload
 
-bindsym --to-code $mod+Delete exec $power_control
+bindsym --to-code $mod+Delete exec $power_menu
 
 ## Moving around:
 bindsym --to-code $mod+$left focus left
@@ -118,38 +118,38 @@ bindsym --to-code $mod+Shift+o exec \
     "swaymsg resize grow right 2 px or 2 ppt || swaymsg resize shrink left 2 px or 2 ppt"
 
 ## Workspaces:
-bindsym $mod+F1 exec $workspace_ctl set-layer 1
-bindsym $mod+F2 exec $workspace_ctl set-layer 2
-bindsym $mod+F3 exec $workspace_ctl set-layer 3
-bindsym $mod+F4 exec $workspace_ctl set-layer 4
-bindsym $mod+F5 exec $workspace_ctl set-layer 5
-bindsym $mod+F6 exec $workspace_ctl set-layer 6
-bindsym $mod+F7 exec $workspace_ctl set-layer 7
-bindsym $mod+F8 exec $workspace_ctl set-layer 8
-bindsym $mod+F9 exec $workspace_ctl set-layer 9
-bindsym $mod+Grave exec $workspace_ctl set-layer 0
+bindsym $mod+F1 exec $workspacectl set-layer 1
+bindsym $mod+F2 exec $workspacectl set-layer 2
+bindsym $mod+F3 exec $workspacectl set-layer 3
+bindsym $mod+F4 exec $workspacectl set-layer 4
+bindsym $mod+F5 exec $workspacectl set-layer 5
+bindsym $mod+F6 exec $workspacectl set-layer 6
+bindsym $mod+F7 exec $workspacectl set-layer 7
+bindsym $mod+F8 exec $workspacectl set-layer 8
+bindsym $mod+F9 exec $workspacectl set-layer 9
+bindsym $mod+Grave exec $workspacectl set-layer 0
 
-bindsym $mod+1 exec $workspace_ctl set 1
-bindsym $mod+2 exec $workspace_ctl set 2
-bindsym $mod+3 exec $workspace_ctl set 3
-bindsym $mod+4 exec $workspace_ctl set 4
-bindsym $mod+5 exec $workspace_ctl set 5
-bindsym $mod+6 exec $workspace_ctl set 6
-bindsym $mod+7 exec $workspace_ctl set 7
-bindsym $mod+8 exec $workspace_ctl set 8
-bindsym $mod+9 exec $workspace_ctl set 9
-bindsym $mod+0 exec $workspace_ctl set 10
+bindsym $mod+1 exec $workspacectl set 1
+bindsym $mod+2 exec $workspacectl set 2
+bindsym $mod+3 exec $workspacectl set 3
+bindsym $mod+4 exec $workspacectl set 4
+bindsym $mod+5 exec $workspacectl set 5
+bindsym $mod+6 exec $workspacectl set 6
+bindsym $mod+7 exec $workspacectl set 7
+bindsym $mod+8 exec $workspacectl set 8
+bindsym $mod+9 exec $workspacectl set 9
+bindsym $mod+0 exec $workspacectl set 10
 
-bindsym $mod+Shift+1 exec $workspace_ctl move 1
-bindsym $mod+Shift+2 exec $workspace_ctl move 2
-bindsym $mod+Shift+3 exec $workspace_ctl move 3
-bindsym $mod+Shift+4 exec $workspace_ctl move 4
-bindsym $mod+Shift+5 exec $workspace_ctl move 5
-bindsym $mod+Shift+6 exec $workspace_ctl move 6
-bindsym $mod+Shift+7 exec $workspace_ctl move 7
-bindsym $mod+Shift+8 exec $workspace_ctl move 8
-bindsym $mod+Shift+9 exec $workspace_ctl move 9
-bindsym $mod+Shift+0 exec $workspace_ctl move 10
+bindsym $mod+Shift+1 exec $workspacectl move 1
+bindsym $mod+Shift+2 exec $workspacectl move 2
+bindsym $mod+Shift+3 exec $workspacectl move 3
+bindsym $mod+Shift+4 exec $workspacectl move 4
+bindsym $mod+Shift+5 exec $workspacectl move 5
+bindsym $mod+Shift+6 exec $workspacectl move 6
+bindsym $mod+Shift+7 exec $workspacectl move 7
+bindsym $mod+Shift+8 exec $workspacectl move 8
+bindsym $mod+Shift+9 exec $workspacectl move 9
+bindsym $mod+Shift+0 exec $workspacectl move 10
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
@@ -214,7 +214,7 @@ bar {
     pango_markup enabled
     tray_padding 4
 
-    status_command while true; do $swaybar_script; sleep 1; done
+    status_command while true; do $statusbar; sleep 1; done
 
     colors {
         statusline         $foreground_1

@@ -6,7 +6,7 @@ TIMEOUT="300" # Seconds until locked
 
 SCRIPT_DIR="$(dirname $(realpath $0))"
 SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
-SWAY_SCRIPT_LOCKER="$SCRIPT_DIR/screen-lock.sh"
+SWAY_SCRIPT_LOCKER="$SCRIPT_DIR/screenlock.sh"
 PID_FILE="$SWAY_STATE/swayidle.pid"
 
 swayidle timeout "$TIMEOUT" "sh $SWAY_SCRIPT_LOCKER" &
