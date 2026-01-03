@@ -28,7 +28,7 @@ case "$COMMAND" in
             notify="$notify set to $COMMAND_2"
         fi
         echo "$COMMAND_2" > "$LAYER_FILE"
-        notify-send "$notify"
+        notify-send --urgency low --expire-time 500 "$notify"
         ;;
     set)
         swaymsg workspace number "$(get_workspace $COMMAND_2)"
