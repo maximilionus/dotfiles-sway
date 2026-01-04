@@ -6,7 +6,7 @@ SWAY_STATE="${XDG_RUNTIME_DIR:-/tmp/$USER}/sway"
 LAYER_FILE="$SWAY_STATE/workspace_layer"
 
 get_layer () {
-    cat "$LAYER_FILE" 2>/dev/null || echo ""
+    head -1 "$LAYER_FILE" 2>/dev/null || echo ""
 }
 
 get_workspace () {
