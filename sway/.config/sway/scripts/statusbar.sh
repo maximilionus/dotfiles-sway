@@ -3,7 +3,7 @@
 # Do not update the status bar when the screen is locked.
 if pgrep -x swaylock > /dev/null; then exit 0; fi
 
-SPLITTER=
+SPLITTER="    "
 # SPLITTER="<span foreground=\"gray\">|</span>"
 
 KB_PREFIX="<span weight=\"bold\">LANG</span> "
@@ -164,14 +164,14 @@ wakelock_module_fnc
 # Margin... using spaces. Sorry not sorry :)
 modules=()
 
-[[ -n "$wakelock_module" ]]      && modules+=("  $SPLITTER  $wakelock_module")
-[[ -n "$notifications_module" ]] && modules+=("  $SPLITTER  $notifications_module")
-[[ -n "$backlight_module" ]]     && modules+=("  $SPLITTER  $backlight_module")
-[[ -n "$battery_module" ]]       && modules+=("  $SPLITTER  $battery_module")
-[[ -n "$bluetooth_module" ]]     && modules+=("  $SPLITTER  $bluetooth_module")
-[[ -n "$network_module" ]]       && modules+=("  $SPLITTER  $network_module")
-[[ -n "$audio_module" ]]         && modules+=("  $SPLITTER  $audio_module")
-[[ -n "$keyboard_module" ]]      && modules+=("  $SPLITTER  $keyboard_module")
-[[ -n "$date_module" ]]          && modules+=("  $SPLITTER  $date_module")
+[[ -n "$wakelock_module" ]]      && modules+=("${SPLITTER}$wakelock_module")
+[[ -n "$notifications_module" ]] && modules+=("${SPLITTER}$notifications_module")
+[[ -n "$backlight_module" ]]     && modules+=("${SPLITTER}$backlight_module")
+[[ -n "$battery_module" ]]       && modules+=("${SPLITTER}$battery_module")
+[[ -n "$bluetooth_module" ]]     && modules+=("${SPLITTER}$bluetooth_module")
+[[ -n "$network_module" ]]       && modules+=("${SPLITTER}$network_module")
+[[ -n "$audio_module" ]]         && modules+=("${SPLITTER}$audio_module")
+[[ -n "$keyboard_module" ]]      && modules+=("${SPLITTER}$keyboard_module")
+[[ -n "$date_module" ]]          && modules+=("${SPLITTER}$date_module")
 
-echo "${modules[*]}   $SPLITTER  "
+echo "${modules[*]}$SPLITTER"
