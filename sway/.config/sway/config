@@ -200,6 +200,9 @@ hide_edge_borders smart
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
+for_window [app_id="firefox" title="Picture-in-Picture"] \
+    floating enable, sticky enable, resize set width 800 height 450
+
 seat * hide_cursor 8000
 
 include $SWAY_CONFIG_DIR/theme/theme.conf
