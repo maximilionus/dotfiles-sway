@@ -19,10 +19,10 @@
         "battery",
         "battery#bat2",
         "keyboard-state",
-        "hyprland/language",
+        "sway/language",
         "clock"
     ],
-    "hyprland/language": {
+    "sway/language": {
         "format": " {short}"
     },
     "keyboard-state": {
