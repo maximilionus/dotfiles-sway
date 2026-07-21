@@ -1,15 +1,17 @@
 sway
+xorg-xwayland
 swaybg
 swayidle
 swaylock
+waybar
+wmenu
 foot
 foot-terminfo
-wmenu
 jq
 libnotify
-dunst
-grim
+mako
 imv
+grim
 slurp
 wl-clipboard
 brightnessctl
@@ -23,3 +25,4 @@ gnome-themes-extra
 gnome-keyring
 polkit-gnome
 inter-font
+otf-font-awesome

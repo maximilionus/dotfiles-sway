@@ -25,8 +25,8 @@ output * subpixel none
 exec mkdir -p $SWAY_RUNTIME_DIR
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
-exec dunst
 exec playerctld daemon
+exec mako
 
 # Output configuration
 output * bg ~/Pictures/wallpaper fill
@@ -206,20 +206,7 @@ include $SWAY_CONFIG_DIR/theme/theme.conf
 
 # Status Bar
 bar {
-    position top
-    pango_markup enabled
-    tray_padding 4
-
-    status_command while true; do $statusbar; sleep 1; done
-
-    colors {
-        statusline         $foreground_1
-        background         $background_1
-        inactive_workspace $background_1 $background_1 $foreground_2
-        active_workspace   $foreground_2 $foreground_2 $background_1
-        focused_workspace  $foreground_1 $foreground_1 $background_1
-        urgent_workspace   $accent $accent $foreground_1
-    }
+    swaybar_command waybar
 }
 
 # class                 border        bground       text          indicator     child_border
