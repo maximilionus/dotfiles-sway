@@ -2,10 +2,12 @@
 
 set -e
 
-SCREENSHOTS_PATH="$HOME/Pictures"
+SCREENSHOTS_PATH="$HOME/Pictures/Screenshots"
 
-crop-to-clipboard() {
+crop() {
     tmp_bg="/tmp/screenshot-freeze-$(date +%s).png"
+
+    prepare
 
     grim \
         -l 0 \
@@ -26,17 +28,35 @@ crop-to-clipboard() {
 }
 
 fullscreen() {
-    img_path="$SCREENSHOTS_PATH/screenshot-$(date +%Y%m%d-%H%M%S).png"
+    to_clipboard="$1"
 
-    grim \
-        -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') \
-        "$img_path"
-    notify-send --urgency low "Screenshot (Fullscreen)" "Saved to $img_path"
+    prepare
+
+    if [[ "$to_clipboard" -ne 1 ]]; then
+        img_path="$SCREENSHOTS_PATH/screenshot-$(date +%Y%m%d-%H%M%S).png"
+
+        grim \
+            -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') \
+            "$img_path"
+        notify-send --urgency low "Screenshot (Fullscreen)" "Saved to $img_path"
+    else
+        grim \
+            -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - \
+            | wl-copy
+        notify-send --urgency low "Screenshot (Fullscreen)" "Copied to clipboard"
+    fi
+}
+
+prepare() {
+    mkdir -p "$SCREENSHOTS_PATH"
 }
 
 case "$1" in
-    crop-to-clipboard)
-        crop-to-clipboard
+    crop-copy)
+        crop
+        ;;
+    fullscreen-copy)
+        fullscreen 1
         ;;
     *|fullscreen)
         fullscreen

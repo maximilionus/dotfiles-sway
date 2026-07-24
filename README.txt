@@ -53,7 +53,8 @@ EXTENDED CONTROLS
     Tile horizontal split                    - mod + g
     Tile vertical split                      - mod + v
     Cancel tile split                        - mod + c
-    Screenshot (Selection to clibboard)      - PrntScr
-    Screenshot (Active screen to file)       - Shift + PrntScr
+    Screenshot (Selection to clipboard)      - Print
+    Screenshot (Fullscreen to clipboard)     - Shift + Print
+    Screenshot (Fullscreen to file)          - Shift + Ctrl +Print
     Turn display power off                   - mod + PgDown
     Turn display power on                    - mod + PgUp

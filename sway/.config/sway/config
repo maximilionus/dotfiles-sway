@@ -182,8 +182,9 @@ bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ t
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
-bindsym Shift+Print exec $screenshot
-bindsym Print exec $screenshot crop-to-clipboard
+bindsym Shift+Print exec $screenshot fullscreen-copy
+bindsym Shift+Ctrl+Print exec $screenshot fullscreen
+bindsym Print exec $screenshot crop-copy
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
