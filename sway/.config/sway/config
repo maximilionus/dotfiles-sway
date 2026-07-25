@@ -30,6 +30,8 @@ exec mako
 
 # Output configuration
 output * bg ~/Pictures/wallpaper fill
+output * allow_tearing yes
+output * max_render_time off
 
 # Idle configuration
 exec swayidle -w before-sleep "sh $screenlock 1"
