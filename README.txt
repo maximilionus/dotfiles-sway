@@ -48,6 +48,7 @@ EXTENDED CONTROLS
       ^ Hold Shift for precise resize
     Full-screen mode switch                  - mod + m
     Always-on-top mode                       - mod + s
+    Workspace next/prev                      - mod + Mouse Down/Up
     Set workspace layer                      - mod + <F1..F9>
     Reset workspace layer                    - mod + `
     Tile horizontal split                    - mod + g
