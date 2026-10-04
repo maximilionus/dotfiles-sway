@@ -24,3 +24,6 @@ border-color=#424242
 background-color=#504040
 border-color=#524242
 default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1

@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 1.0);
+    background-color: #000000;
     border-bottom: none;
     color: #ffffff;
     transition-property: background-color;
@@ -37,7 +37,7 @@ button:hover {
 }
 
 #workspaces button.focused {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #000000;
     box-shadow: inset 0 -3px #ffffff;
 }
@@ -60,24 +60,7 @@ button:hover {
     margin-right: 16px;
 }
 
-#privacy {
-    padding: 0;
-}
-
 #privacy-item {
     padding: 0 5px;
-    margin: 1px;
-    color: white;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
+    color: #afafaf;
 }

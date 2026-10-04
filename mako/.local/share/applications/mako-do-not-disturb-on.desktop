@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Enable Do Not Disturb mode
+Keywords=mute;
+Exec=sh -c 'makoctl mode -a do-not-disturb'
+Icon=
+Terminal=false
+Type=Application
+Categories=Settings;

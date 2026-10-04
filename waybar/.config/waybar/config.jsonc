@@ -1,13 +1,14 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 16, // Gaps between modules (4px)
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "spacing": 16, // Gaps between modules
+    "fixed-center": false,
+    "expand-center": true,
     "modules-left": [
         "sway/workspaces"
     ],
-    "modules-center": [],
     "modules-right": [
         "privacy",
         "tray",
@@ -78,6 +79,8 @@
     "bluetooth": {
         "format": "",
         "format-disabled": "",
+        "format-off": "",
+        "format-no-controller": "",
         "format-connected": " {num_connections}",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
@@ -103,7 +106,7 @@
     },
     "privacy": {
         "icon-spacing": 4,
-        "icon-size": 18,
+        "icon-size": 16,
         "transition-duration": 250,
         "modules": [
             {

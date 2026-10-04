@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Turn off the Do Not Disturb mode
+Keywords=unmute;
+Exec=sh -c 'makoctl mode -r do-not-disturb'
+Icon=
+Terminal=false
+Type=Application
+Categories=Settings;
